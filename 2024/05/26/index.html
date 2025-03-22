@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>【hexo】解决hexo页面地址机器码 | Aluo</title>
+  <title>【Mysql】简单的增删改查命令 | Aluo</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -370,21 +370,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        【hexo】解决hexo页面地址机器码
+        【Mysql】简单的增删改查命令
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-08-06 |
+          <i class="fas fa-calendar"></i> Published in：2024-05-26 |
         </span>
       
 
@@ -408,13 +408,17 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="【hexo】解决hexo页面地址机器码"><a href="#【hexo】解决hexo页面地址机器码" class="headerlink" title="【hexo】解决hexo页面地址机器码"></a>【hexo】解决hexo页面地址机器码</h1><p>最近发现想把写的文章发给朋友明明在网页上复制的时候是这样的</p>
-<p><img src="/../data/2024/%E5%9C%B0%E5%9D%80.png" class="lazyload placeholder" data-srcset="/../data/2024/%E5%9C%B0%E5%9D%80.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt=" "></p>
-<p>结果发给朋友是这样的</p>
-<p><img src="/../data/2024/%E6%9C%BA%E5%99%A8%E7%A0%81.png" class="lazyload placeholder" data-srcset="/../data/2024/%E6%9C%BA%E5%99%A8%E7%A0%81.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt=" "></p>
-<p>这种情况是因为当你在 URL 中使用中文或其他非 ASCII 字符时，浏览器或服务器会自动将这些字符转换为 URL 编码格式。例如：<br>中文字符 【 被编码为 %E3%80%90<br>中文字符 】 被编码为 %E3%80%91<br>中文字符 的 被编码为 %E7%9A%84</p>
-<p>解决这种情况需要确保你的 Hexo 配置文件中正确设置了 permalink 和 pretty_urls，并且你的服务器支持这些配置。例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: <span class="literal">false</span></span><br><span class="line">  trailing_html: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+        <h1 id="【Mysql】简单的增删改查命令"><a href="#【Mysql】简单的增删改查命令" class="headerlink" title="【Mysql】简单的增删改查命令"></a>【Mysql】简单的增删改查命令</h1><h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create database“数据库名字”</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例：create database test-16</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以创建评论表为例</span></span><br><span class="line">create table comment (</span><br><span class="line">    <span class="built_in">id</span> int</span><br><span class="line">    name varchar(20)</span><br><span class="line">    content varchar(125)</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="显示当前数据库的表名"><a href="#显示当前数据库的表名" class="headerlink" title="显示当前数据库的表名"></a>显示当前数据库的表名</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;  </span><br></pre></td></tr></table></figure>
+<h2 id="显示表的字段信息"><a href="#显示表的字段信息" class="headerlink" title="显示表的字段信息"></a>显示表的字段信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show create table <span class="string">&#x27;表名&#x27;</span>;</span><br><span class="line"><span class="comment"># 例如：show create table comment;</span></span><br></pre></td></tr></table></figure>
+<h2 id="新增数据"><a href="#新增数据" class="headerlink" title="新增数据"></a>新增数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name (column1,</span><br><span class="line">column2,)</span><br><span class="line">VALUES(vulue1,vulue2,..);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：insert into comment(id,name,content)</span></span><br><span class="line"><span class="comment">#     -&gt;values(1,&quot;Qiluo&quot;,&quot;ysagh&quot;);</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * from 表名；</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如:select * from comment;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> 某一字段 from comment;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：select name,content from comment;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">updata 表名 <span class="built_in">set</span> 字段名 = vulue <span class="built_in">where</span> 条件；</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：update comment set name=&quot;Qiluo&quot; where id=1;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
       </div>
       <div class="post-tags-categories">
         
@@ -427,7 +431,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/posts/adaf1b3a/" target="_blank" title="【hexo】解决hexo页面地址机器码">http://example.com/posts/adaf1b3a/</a>
+    <a href="/2024/05/26/" target="_blank" title="【Mysql】简单的增删改查命令">http://example.com/2024/05/26/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -445,21 +449,39 @@
 
 
 
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/2024/07/23/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">【Vue】Vue前端开发中路由的基本知识及用法</div>
+      </div>
+      
+      <!-- <div class="content">
+        【Vue】Vue前端开发中路由的基本知识及用法一、Vue Router 简介Vue Router 是 Vue.js 官方
+      </div> -->
+    </a>
+  </div>
+
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/posts/4f5f980c/" class="post-nav-link">
+    <a href="/2024/05/20/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">【Vue】Vue前端开发中路由的基本知识及用法</div>
+        <div class="title-text">【Docker】服务器安装及配置docker</div>
       </div>
       <!-- <div class="content">
-        【Vue】Vue前端开发中路由的基本知识及用法一、Vue Router 简介Vue Router 是 Vue.js 官方
+        【Docker】服务器安装及配置docker一. 系统要求与兼容性1. 内核版本确保系统内核版本 &gt;&#x3D; 
       </div> -->
     </a>
   </div>
@@ -681,7 +703,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90hexo%E3%80%91%E8%A7%A3%E5%86%B3hexo%E9%A1%B5%E9%9D%A2%E5%9C%B0%E5%9D%80%E6%9C%BA%E5%99%A8%E7%A0%81"><span class="toc-text">【hexo】解决hexo页面地址机器码</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Mysql%E3%80%91%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%91%BD%E4%BB%A4"><span class="toc-text">【Mysql】简单的增删改查命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-text">创建数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A1%A8%E5%90%8D"><span class="toc-text">显示当前数据库的表名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E8%A1%A8%E7%9A%84%E5%AD%97%E6%AE%B5%E4%BF%A1%E6%81%AF"><span class="toc-text">显示表的字段信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE"><span class="toc-text">新增数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">查询数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">修改数据</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -714,7 +736,7 @@
             
 
             <div class="post-img-box">
-              <a href="/posts/adaf1b3a/" class="post-img " style="background-size: cover; 
+              <a href="/2024/08/06/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -725,7 +747,7 @@
                   <span class="post-date">08-06</span>
                 
               </div>
-              <a class="post-title" href="/posts/adaf1b3a/">【hexo】解决hexo页面地址机器码</a>
+              <a class="post-title" href="/2024/08/06/">【hexo】解决hexo页面地址机器码</a>
             </div>
           </div>
         
@@ -735,7 +757,7 @@
             
 
             <div class="post-img-box">
-              <a href="/posts/4f5f980c/" class="post-img " style="background-size: cover; 
+              <a href="/2024/07/23/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -746,7 +768,7 @@
                   <span class="post-date">07-23</span>
                 
               </div>
-              <a class="post-title" href="/posts/4f5f980c/">【Vue】Vue前端开发中路由的基本知识及用法</a>
+              <a class="post-title" href="/2024/07/23/">【Vue】Vue前端开发中路由的基本知识及用法</a>
             </div>
           </div>
         
@@ -756,7 +778,7 @@
             
 
             <div class="post-img-box">
-              <a href="/posts/3aaf89f7/" class="post-img " style="background-size: cover; 
+              <a href="/2024/05/26/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -767,7 +789,7 @@
                   <span class="post-date">05-26</span>
                 
               </div>
-              <a class="post-title" href="/posts/3aaf89f7/">【Mysql】简单的增删改查命令</a>
+              <a class="post-title" href="/2024/05/26/">【Mysql】简单的增删改查命令</a>
             </div>
           </div>
         
@@ -777,7 +799,7 @@
             
 
             <div class="post-img-box">
-              <a href="/posts/d2998521/" class="post-img " style="background-size: cover; 
+              <a href="/2024/05/20/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -788,7 +810,7 @@
                   <span class="post-date">05-20</span>
                 
               </div>
-              <a class="post-title" href="/posts/d2998521/">【Docker】服务器安装及配置docker</a>
+              <a class="post-title" href="/2024/05/20/">【Docker】服务器安装及配置docker</a>
             </div>
           </div>
         
@@ -798,7 +820,7 @@
             
 
             <div class="post-img-box">
-              <a href="/posts/a144611c/" class="post-img " style="background-size: cover; 
+              <a href="/2024/04/27/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -809,7 +831,7 @@
                   <span class="post-date">04-27</span>
                 
               </div>
-              <a class="post-title" href="/posts/a144611c/">【hexo】新建及发布文章</a>
+              <a class="post-title" href="/2024/04/27/">【hexo】新建及发布文章</a>
             </div>
           </div>
         
