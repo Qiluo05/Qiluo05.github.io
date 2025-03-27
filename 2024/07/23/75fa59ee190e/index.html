@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>【hexo】新建及发布文章 | Aluo</title>
+  <title>【Vue】Vue前端开发中路由的基本知识及用法 | Aluo</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -370,21 +370,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        【hexo】新建及发布文章
+        【Vue】Vue前端开发中路由的基本知识及用法
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-04-27 |
+          <i class="fas fa-calendar"></i> Published in：2024-07-23 |
         </span>
       
 
@@ -408,19 +408,75 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="【hexo】新建及发布文章"><a href="#【hexo】新建及发布文章" class="headerlink" title="【hexo】新建及发布文章"></a>【hexo】新建及发布文章</h1><p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="【Vue】Vue前端开发中路由的基本知识及用法"><a href="#【Vue】Vue前端开发中路由的基本知识及用法" class="headerlink" title="【Vue】Vue前端开发中路由的基本知识及用法"></a>【Vue】Vue前端开发中路由的基本知识及用法</h1><h2 id="一、Vue-Router-简介"><a href="#一、Vue-Router-简介" class="headerlink" title="一、Vue Router 简介"></a>一、Vue Router 简介</h2><p>Vue Router 是 Vue.js 官方的路由管理器，它与 Vue.js 核心深度集成，使得构建单页面应用变得轻而易举。Vue Router 允许我们定义路由映射关系，并在用户访问不同 URL 时渲染不同的组件。</p>
+<h3 id="1-1-安装-Vue-Router"><a href="#1-1-安装-Vue-Router" class="headerlink" title="1.1 安装 Vue Router"></a>1.1 安装 Vue Router</h3><p>在使用 Vue Router 之前，我们需要先安装它。可以通过 npm 或 yarn 来安装 Vue Router：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add vue-router</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-配置-Vue-Router"><a href="#1-2-配置-Vue-Router" class="headerlink" title="1.2 配置 Vue Router"></a>1.2 配置 Vue Router</h3><p>安装完成后，我们需要在 Vue 项目中配置 Vue Router。通常，我们会创建一个 router 目录，并在其中创建一个 index.js 文件来配置路由。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// src/router/index.js</span><br><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line">import VueRouter from <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line">import Home from <span class="string">&#x27;../views/Home.vue&#x27;</span>;</span><br><span class="line">import About from <span class="string">&#x27;../views/About.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line"></span><br><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    component: About</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default router;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，我们首先引入了 Vue 和 VueRouter，然后通过 Vue.use(VueRouter) 来安装 Vue Router。接着，我们定义了一个路由数组 routes，其中每个路由对象都包含 path、name 和 component 属性。最后，我们创建了一个 VueRouter 实例，并将其导出。</p>
+<h3 id="1-3-在-Vue-实例中使用-Vue-Router"><a href="#1-3-在-Vue-实例中使用-Vue-Router" class="headerlink" title="1.3 在 Vue 实例中使用 Vue Router"></a>1.3 在 Vue 实例中使用 Vue Router</h3><p>配置好路由后，我们需要在 Vue 实例中使用它。通常，我们会在 main.js 文件中引入并使用路由。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// src/main.js</span><br><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line">import App from <span class="string">&#x27;./App.vue&#x27;</span>;</span><br><span class="line">import router from <span class="string">&#x27;./router&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;).<span class="variable">$mount</span>(<span class="string">&#x27;#app&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>在上面的代码中，我们将 router 实例注入到 Vue 实例中，这样整个应用就可以使用 Vue Router 了。</p>
+<h2 id="二、-路由的基本用法"><a href="#二、-路由的基本用法" class="headerlink" title="二、 路由的基本用法"></a>二、 路由的基本用法</h2><h3 id="2-1-路由映射"><a href="#2-1-路由映射" class="headerlink" title="2.1 路由映射"></a>2.1 路由映射</h3><p>在 Vue Router 中，路由映射是通过 routes 数组来定义的。每个路由对象都包含以下属性：<br>path：表示路由的路径，可以是静态路径或动态路径。<br>name：表示路由的名称，可以通过名称来引用路由。<br>component：表示路由对应的组件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    component: About</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-路由视图"><a href="#2-2-路由视图" class="headerlink" title="2.2 路由视图"></a>2.2 路由视图</h3><p>在 Vue Router 中，路由视图是通过 <router-view> 组件来渲染的。<router-view> 是一个占位符，用于显示与当前路由匹配的组件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/App.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="built_in">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，<router-view> 会根据当前路由动态渲染对应的组件。</p>
+<h3 id="2-3-路由链接"><a href="#2-3-路由链接" class="headerlink" title="2.3 路由链接"></a>2.3 路由链接</h3><p>在 Vue Router 中，路由链接是通过 <router-link> 组件来创建的。<router-link> 是一个导航链接，用于在不同的路由之间切换。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/App.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="built_in">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line">    &lt;nav&gt;</span><br><span class="line">      &lt;router-link to=<span class="string">&quot;/&quot;</span>&gt;Home&lt;/router-link&gt;</span><br><span class="line">      &lt;router-link to=<span class="string">&quot;/about&quot;</span>&gt;About&lt;/router-link&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，<router-link> 会根据 to 属性生成相应的链接，并在用户点击时导航到对应的路由。</p>
+<h2 id="三、-动态路由"><a href="#三、-动态路由" class="headerlink" title="三、 动态路由"></a>三、 动态路由</h2><p>在实际开发中，我们经常需要根据不同的参数来动态渲染组件。Vue Router 提供了动态路由的功能，允许我们在路由路径中使用动态参数。</p>
+<h3 id="3-1-动态路径参数"><a href="#3-1-动态路径参数" class="headerlink" title="3.1 动态路径参数"></a>3.1 动态路径参数</h3><p>在路由路径中，我们可以使用 : 来定义动态参数。例如，我们可以定义一个包含用户 ID 的动态路由：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;User&#x27;</span>,</span><br><span class="line">    component: User</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，:id 是一个动态参数，它可以匹配任何值。例如，&#x2F;user&#x2F;1 和 &#x2F;user&#x2F;2 都会匹配到这个路由。</p>
+<h3 id="3-2-访问动态参数"><a href="#3-2-访问动态参数" class="headerlink" title="3.2 访问动态参数"></a>3.2 访问动态参数</h3><p>在组件中，我们可以通过 this.$route.params 来访问动态参数。例如，在 User 组件中，我们可以通过 this.$route.params.id 来获取用户 ID。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/views/User.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;User ID: &#123;&#123; userId &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="function"><span class="title">userId</span></span>() &#123;</span><br><span class="line">      <span class="built_in">return</span> this.<span class="variable">$route</span>.params.id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-响应路由参数的变化"><a href="#3-3-响应路由参数的变化" class="headerlink" title="3.3 响应路由参数的变化"></a>3.3 响应路由参数的变化</h3><p>当路由参数发生变化时，Vue Router 会复用同一个组件实例，而不是销毁并重新创建。这意味着，组件的生命周期钩子（如 mounted）不会再次触发。为了响应路由参数的变化，我们可以使用 watch 来监听 $route 对象的变化。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/views/User.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;User ID: &#123;&#123; userId &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="function"><span class="title">userId</span></span>() &#123;</span><br><span class="line">      <span class="built_in">return</span> this.<span class="variable">$route</span>.params.id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    <span class="string">&#x27;$route.params.id&#x27;</span>(newId, oldId) &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;User ID changed from&#x27;</span>, oldId, <span class="string">&#x27;to&#x27;</span>, newId);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们通过 watch 监听 $route.params.id 的变化，并在控制台中输出变化信息。</p>
+<h2 id="四、-嵌套路由"><a href="#四、-嵌套路由" class="headerlink" title="四、 嵌套路由"></a>四、 嵌套路由</h2><p>在实际开发中，我们经常需要在一个组件中嵌套其他组件。Vue Router 提供了嵌套路由的功能，允许我们在一个路由中定义子路由。</p>
+<h3 id="4-1-定义嵌套路由"><a href="#4-1-定义嵌套路由" class="headerlink" title="4.1 定义嵌套路由"></a>4.1 定义嵌套路由</h3><p>在路由配置中，我们可以通过 children 属性来定义嵌套路由。例如，我们可以在 User 组件中定义两个子路由：Profile 和 Posts。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">    component: User,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">&#x27;profile&#x27;</span>,</span><br><span class="line">        component: Profile</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">&#x27;posts&#x27;</span>,</span><br><span class="line">        component: Posts</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，User 组件是父路由，Profile 和 Posts 是子路由。当用户访问 &#x2F;user&#x2F;1&#x2F;profile 时，User 组件会渲染 Profile 组件；当用户访问 &#x2F;user&#x2F;1&#x2F;posts 时，User 组件会渲染 Posts 组件。</p>
+<h3 id="4-2-渲染嵌套路由"><a href="#4-2-渲染嵌套路由" class="headerlink" title="4.2 渲染嵌套路由"></a>4.2 渲染嵌套路由</h3><p>在父组件中，我们可以通过 <router-view> 来渲染子路由。例如，在 User 组件中，我们可以使用 <router-view> 来渲染 Profile 或 Posts 组件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/views/User.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;User ID: &#123;&#123; userId &#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="function"><span class="title">userId</span></span>() &#123;</span><br><span class="line">      <span class="built_in">return</span> this.<span class="variable">$route</span>.params.id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，<router-view> 会根据当前子路由动态渲染 Profile 或 Posts 组件。</p>
+<h2 id="五、-路由守卫"><a href="#五、-路由守卫" class="headerlink" title="五、 路由守卫"></a>五、 路由守卫</h2><p>路由守卫是 Vue Router 提供的一种机制，允许我们在路由导航过程中执行一些操作，例如权限验证、数据预取等。Vue Router 提供了三种路由守卫：全局守卫、路由独享守卫和组件内守卫。</p>
+<h3 id="5-1-全局守卫"><a href="#5-1-全局守卫" class="headerlink" title="5.1 全局守卫"></a>5.1 全局守卫</h3><p>全局守卫是在路由导航过程中全局生效的守卫。Vue Router 提供了三种全局守卫：beforeEach、beforeResolve 和 afterEach。<br>beforeEach：在路由导航之前执行，常用于权限验证。<br>beforeResolve：在路由导航确认之前执行，常用于数据预取。<br>afterEach：在路由导航完成之后执行，常用于日志记录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// src/router/index.js</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.beforeEach((to, from, next) =&gt; &#123;</span><br><span class="line">  console.log(&#x27;Global beforeEach guard&#x27;);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.beforeResolve((to, from, next) =&gt; &#123;</span><br><span class="line">  console.log(&#x27;Global beforeResolve guard&#x27;);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.afterEach((to, from) =&gt; &#123;</span><br><span class="line">  console.log(&#x27;Global afterEach guard&#x27;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default router;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们定义了三个全局守卫，并在控制台中输出相应的日志信息。</p>
+<h3 id="5-2-路由独享守卫"><a href="#5-2-路由独享守卫" class="headerlink" title="5.2 路由独享守卫"></a>5.2 路由独享守卫</h3><p>路由独享守卫是在某个特定路由上生效的守卫。我们可以在路由配置中通过 beforeEnter 属性来定义路由独享守卫。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">    component: User,</span><br><span class="line">    beforeEnter: (to, from, next) =&gt; &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;Route-specific beforeEnter guard&#x27;</span>);</span><br><span class="line">      next();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们为 &#x2F;user&#x2F;:id 路由定义了一个 beforeEnter 守卫，并在控制台中输出日志信息。</p>
+<h3 id="5-3-组件内守卫"><a href="#5-3-组件内守卫" class="headerlink" title="5.3 组件内守卫"></a>5.3 组件内守卫</h3><p>组件内守卫是在组件内部定义的守卫。Vue Router 提供了三种组件内守卫：beforeRouteEnter、beforeRouteUpdate 和 beforeRouteLeave。<br>beforeRouteEnter：在路由进入组件之前执行，常用于权限验证。<br>beforeRouteUpdate：在路由更新时执行，常用于响应路由参数的变化。<br>beforeRouteLeave：在路由离开组件之前执行，常用于提示用户保存未保存的数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/views/User.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;User ID: &#123;&#123; userId &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="function"><span class="title">userId</span></span>() &#123;</span><br><span class="line">      <span class="built_in">return</span> this.<span class="variable">$route</span>.params.id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteEnter(to, from, next) &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;Component beforeRouteEnter guard&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteUpdate(to, from, next) &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;Component beforeRouteUpdate guard&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteLeave(to, from, next) &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;Component beforeRouteLeave guard&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们定义了三个组件内守卫，并在控制台中输出相应的日志信息。</p>
+<h2 id="六、-路由懒加载"><a href="#六、-路由懒加载" class="headerlink" title="六、 路由懒加载"></a>六、 路由懒加载</h2><p>随着应用的规模增大，打包后的 JavaScript 文件也会变得越来越大，这会导致应用的初始加载时间变长。为了优化应用的性能，Vue Router 提供了路由懒加载的功能，允许我们将路由对应的组件按需加载。</p>
+<h3 id="6-1-使用动态导入实现懒加载"><a href="#6-1-使用动态导入实现懒加载" class="headerlink" title="6.1 使用动态导入实现懒加载"></a>6.1 使用动态导入实现懒加载</h3><p>在 Vue Router 中，我们可以使用动态导入（import()）来实现路由懒加载。动态导入会返回一个 Promise，Vue Router 会在需要时加载对应的组件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: () =&gt; import(<span class="string">&#x27;../views/Home.vue&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    component: () =&gt; import(<span class="string">&#x27;../views/About.vue&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们使用动态导入来懒加载 Home 和 About 组件。这样，只有在用户访问 &#x2F; 或 &#x2F;about 时，才会加载对应的组件。</p>
+<h3 id="6-2-使用-Webpack-的魔法注释"><a href="#6-2-使用-Webpack-的魔法注释" class="headerlink" title="6.2 使用 Webpack 的魔法注释"></a>6.2 使用 Webpack 的魔法注释</h3><p>在使用动态导入时，我们可以使用 Webpack 的魔法注释来为生成的 chunk 命名。这样，我们可以更好地管理和调试生成的代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: () =&gt; import(/* webpackChunkName: <span class="string">&quot;home&quot;</span> */ <span class="string">&#x27;../views/Home.vue&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    component: () =&gt; import(/* webpackChunkName: <span class="string">&quot;about&quot;</span> */ <span class="string">&#x27;../views/About.vue&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们使用 webpackChunkName 魔法注释为 Home 和 About 组件生成的 chunk 命名。这样，生成的 chunk 文件会被命名为 home.js 和 about.js。</p>
 
       </div>
       <div class="post-tags-categories">
@@ -434,7 +490,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/04/27/【hexo】新建及发布文章/" target="_blank" title="【hexo】新建及发布文章">http://example.com/2024/04/27/【hexo】新建及发布文章/</a>
+    <a href="/2024/07/23/75fa59ee190e/" target="_blank" title="【Vue】Vue前端开发中路由的基本知识及用法">http://example.com/2024/07/23/75fa59ee190e/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -456,21 +512,40 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2024/05/20/%E3%80%90Docker%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEdocker/" class="post-nav-link">
+    <a href="/2024/08/06/1ebfad26531f/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">【Docker】服务器安装及配置docker</div>
+        <div class="title-text">【hexo】解决hexo页面地址机器码</div>
       </div>
       
       <!-- <div class="content">
-        【Docker】服务器安装及配置docker一. 系统要求与兼容性1. 内核版本确保系统内核版本 &gt;&#x3D; 
+        【hexo】解决hexo页面地址机器码最近发现想把写的文章发给朋友明明在网页上复制的时候是这样的
+
+结果发给朋友是这样的
       </div> -->
     </a>
   </div>
 
 
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2024/05/26/3f376400b204/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">【Mysql】简单的增删改查命令</div>
+      </div>
+      <!-- <div class="content">
+        【Mysql】简单的增删改查命令创建数据库1234create database“数据库名字”# 例：create da
+      </div> -->
+    </a>
+  </div>
 
 </div>
 
@@ -689,7 +764,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90hexo%E3%80%91%E6%96%B0%E5%BB%BA%E5%8F%8A%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="toc-text">【hexo】新建及发布文章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Vue%E3%80%91Vue%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%8F%8A%E7%94%A8%E6%B3%95"><span class="toc-text">【Vue】Vue前端开发中路由的基本知识及用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Vue-Router-%E7%AE%80%E4%BB%8B"><span class="toc-text">一、Vue Router 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%AE%89%E8%A3%85-Vue-Router"><span class="toc-text">1.1 安装 Vue Router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%85%8D%E7%BD%AE-Vue-Router"><span class="toc-text">1.2 配置 Vue Router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%9C%A8-Vue-%E5%AE%9E%E4%BE%8B%E4%B8%AD%E4%BD%BF%E7%94%A8-Vue-Router"><span class="toc-text">1.3 在 Vue 实例中使用 Vue Router</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">二、 路由的基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%B7%AF%E7%94%B1%E6%98%A0%E5%B0%84"><span class="toc-text">2.1 路由映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%B7%AF%E7%94%B1%E8%A7%86%E5%9B%BE"><span class="toc-text">2.2 路由视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%B7%AF%E7%94%B1%E9%93%BE%E6%8E%A5"><span class="toc-text">2.3 路由链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-text">三、 动态路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%8A%A8%E6%80%81%E8%B7%AF%E5%BE%84%E5%8F%82%E6%95%B0"><span class="toc-text">3.1 动态路径参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%AE%BF%E9%97%AE%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0"><span class="toc-text">3.2 访问动态参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%93%8D%E5%BA%94%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-text">3.3 响应路由参数的变化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="toc-text">四、 嵌套路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%AE%9A%E4%B9%89%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="toc-text">4.1 定义嵌套路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%B8%B2%E6%9F%93%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="toc-text">4.2 渲染嵌套路由</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81-%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="toc-text">五、 路由守卫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%85%A8%E5%B1%80%E5%AE%88%E5%8D%AB"><span class="toc-text">5.1 全局守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E5%AE%88%E5%8D%AB"><span class="toc-text">5.2 路由独享守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E7%BB%84%E4%BB%B6%E5%86%85%E5%AE%88%E5%8D%AB"><span class="toc-text">5.3 组件内守卫</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81-%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">六、 路由懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E4%BD%BF%E7%94%A8%E5%8A%A8%E6%80%81%E5%AF%BC%E5%85%A5%E5%AE%9E%E7%8E%B0%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">6.1 使用动态导入实现懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E4%BD%BF%E7%94%A8-Webpack-%E7%9A%84%E9%AD%94%E6%B3%95%E6%B3%A8%E9%87%8A"><span class="toc-text">6.2 使用 Webpack 的魔法注释</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -722,7 +797,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/08/06/%E3%80%90hexo%E3%80%91%E8%A7%A3%E5%86%B3hexo%E9%A1%B5%E9%9D%A2%E5%9C%B0%E5%9D%80%E6%9C%BA%E5%99%A8%E7%A0%81/" class="post-img " style="background-size: cover; 
+              <a href="/2024/08/06/1ebfad26531f/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -733,7 +808,7 @@
                   <span class="post-date">08-06</span>
                 
               </div>
-              <a class="post-title" href="/2024/08/06/%E3%80%90hexo%E3%80%91%E8%A7%A3%E5%86%B3hexo%E9%A1%B5%E9%9D%A2%E5%9C%B0%E5%9D%80%E6%9C%BA%E5%99%A8%E7%A0%81/">【hexo】解决hexo页面地址机器码</a>
+              <a class="post-title" href="/2024/08/06/1ebfad26531f/">【hexo】解决hexo页面地址机器码</a>
             </div>
           </div>
         
@@ -743,7 +818,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/07/23/%E3%80%90Vue%E3%80%91Vue%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%8F%8A%E7%94%A8%E6%B3%95/" class="post-img " style="background-size: cover; 
+              <a href="/2024/07/23/75fa59ee190e/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -754,7 +829,7 @@
                   <span class="post-date">07-23</span>
                 
               </div>
-              <a class="post-title" href="/2024/07/23/%E3%80%90Vue%E3%80%91Vue%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%8F%8A%E7%94%A8%E6%B3%95/">【Vue】Vue前端开发中路由的基本知识及用法</a>
+              <a class="post-title" href="/2024/07/23/75fa59ee190e/">【Vue】Vue前端开发中路由的基本知识及用法</a>
             </div>
           </div>
         
@@ -764,7 +839,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/05/26/%E3%80%90Mysql%E3%80%91%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%91%BD%E4%BB%A4/" class="post-img " style="background-size: cover; 
+              <a href="/2024/05/26/3f376400b204/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -775,7 +850,7 @@
                   <span class="post-date">05-26</span>
                 
               </div>
-              <a class="post-title" href="/2024/05/26/%E3%80%90Mysql%E3%80%91%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%91%BD%E4%BB%A4/">【Mysql】简单的增删改查命令</a>
+              <a class="post-title" href="/2024/05/26/3f376400b204/">【Mysql】简单的增删改查命令</a>
             </div>
           </div>
         
@@ -785,7 +860,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/05/20/%E3%80%90Docker%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEdocker/" class="post-img " style="background-size: cover; 
+              <a href="/2024/05/20/c30b7893c43f/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -796,7 +871,7 @@
                   <span class="post-date">05-20</span>
                 
               </div>
-              <a class="post-title" href="/2024/05/20/%E3%80%90Docker%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEdocker/">【Docker】服务器安装及配置docker</a>
+              <a class="post-title" href="/2024/05/20/c30b7893c43f/">【Docker】服务器安装及配置docker</a>
             </div>
           </div>
         
@@ -806,7 +881,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/04/27/%E3%80%90hexo%E3%80%91%E6%96%B0%E5%BB%BA%E5%8F%8A%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="post-img " style="background-size: cover; 
+              <a href="/2024/04/27/217a1ca1cd67/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -817,7 +892,7 @@
                   <span class="post-date">04-27</span>
                 
               </div>
-              <a class="post-title" href="/2024/04/27/%E3%80%90hexo%E3%80%91%E6%96%B0%E5%BB%BA%E5%8F%8A%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">【hexo】新建及发布文章</a>
+              <a class="post-title" href="/2024/04/27/217a1ca1cd67/">【hexo】新建及发布文章</a>
             </div>
           </div>
         

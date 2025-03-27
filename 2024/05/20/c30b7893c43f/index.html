@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>【Mysql】简单的增删改查命令 | Aluo</title>
+  <title>【Docker】服务器安装及配置docker | Aluo</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -370,21 +370,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        【Mysql】简单的增删改查命令
+        【Docker】服务器安装及配置docker
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-05-26 |
+          <i class="fas fa-calendar"></i> Published in：2024-05-20 |
         </span>
       
 
@@ -408,14 +408,37 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="【Mysql】简单的增删改查命令"><a href="#【Mysql】简单的增删改查命令" class="headerlink" title="【Mysql】简单的增删改查命令"></a>【Mysql】简单的增删改查命令</h1><h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create database“数据库名字”</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例：create database test-16</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以创建评论表为例</span></span><br><span class="line">create table comment (</span><br><span class="line">    <span class="built_in">id</span> int</span><br><span class="line">    name varchar(20)</span><br><span class="line">    content varchar(125)</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="显示当前数据库的表名"><a href="#显示当前数据库的表名" class="headerlink" title="显示当前数据库的表名"></a>显示当前数据库的表名</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;  </span><br></pre></td></tr></table></figure>
-<h2 id="显示表的字段信息"><a href="#显示表的字段信息" class="headerlink" title="显示表的字段信息"></a>显示表的字段信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show create table <span class="string">&#x27;表名&#x27;</span>;</span><br><span class="line"><span class="comment"># 例如：show create table comment;</span></span><br></pre></td></tr></table></figure>
-<h2 id="新增数据"><a href="#新增数据" class="headerlink" title="新增数据"></a>新增数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name (column1,</span><br><span class="line">column2,)</span><br><span class="line">VALUES(vulue1,vulue2,..);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：insert into comment(id,name,content)</span></span><br><span class="line"><span class="comment">#     -&gt;values(1,&quot;Qiluo&quot;,&quot;ysagh&quot;);</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h1 id="【Docker】服务器安装及配置docker"><a href="#【Docker】服务器安装及配置docker" class="headerlink" title="【Docker】服务器安装及配置docker"></a>【Docker】服务器安装及配置docker</h1><h2 id="一-系统要求与兼容性"><a href="#一-系统要求与兼容性" class="headerlink" title="一. 系统要求与兼容性"></a>一. 系统要求与兼容性</h2><h3 id="1-内核版本"><a href="#1-内核版本" class="headerlink" title="1. 内核版本"></a>1. 内核版本</h3><p>确保系统内核版本 &gt;&#x3D; 3.10<br>（Alibaba Cloud Linux 3 默认内核为 5.10+）<br>查看命令：<code>uname -r</code><br>示例输出：<code>5.10.134-13.al8.x86_64</code></p>
+<h3 id="2-系统兼容性"><a href="#2-系统兼容性" class="headerlink" title="2. 系统兼容性"></a>2. 系统兼容性</h3><p>Alibaba Cloud Linux 3 全面兼容 CentOS 8，安装 Docker 时需使用 CentOS 8 的软件源与配置方法。</p>
+<h2 id="二-安装前准备"><a href="#二-安装前准备" class="headerlink" title="二. 安装前准备"></a>二. 安装前准备</h2><h3 id="1-卸载旧版本-Docker"><a href="#1-卸载旧版本-Docker" class="headerlink" title="1. 卸载旧版本 Docker"></a>1. 卸载旧版本 Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine</span><br></pre></td></tr></table></figure>
 
-<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * from 表名；</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如:select * from comment;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> 某一字段 from comment;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：select name,content from comment;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">updata 表名 <span class="built_in">set</span> 字段名 = vulue <span class="built_in">where</span> 条件；</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：update comment set name=&quot;Qiluo&quot; where id=1;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="2-安装yum-utils和dnf（新一代包管理工具）"><a href="#2-安装yum-utils和dnf（新一代包管理工具）" class="headerlink" title="2. 安装yum-utils和dnf（新一代包管理工具）"></a>2. 安装yum-utils和dnf（新一代包管理工具）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2 </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install dnf</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-安装兼容插件（关键步骤）"><a href="#3-安装兼容插件（关键步骤）" class="headerlink" title="3. 安装兼容插件（关键步骤）"></a>3. 安装兼容插件（关键步骤）</h3><p>Alibaba Cloud Linux 3需安装专用插件以适配Docker的CentOS8源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf -y install dnf-plugin-releasever-adapter --repo alinux3-plus</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-安装Docker-CE"><a href="#三-安装Docker-CE" class="headerlink" title="三. 安装Docker CE"></a>三. 安装Docker CE</h2><h3 id="1-配置Docker镜像源"><a href="#1-配置Docker镜像源" class="headerlink" title="1. 配置Docker镜像源"></a>1. 配置Docker镜像源</h3><p>使用阿里云镜像源加速下载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装Docker-CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）："><a href="#2-安装Docker-CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）：" class="headerlink" title="2. 安装Docker CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）："></a>2. 安装Docker CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf -y install docker-ce --nobest</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-验证安装"><a href="#3-验证安装" class="headerlink" title="3. 验证安装"></a>3. 验证安装</h3><p>查看已安装的Docker版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf list docker-ce <span class="comment"># 确认版本信息 </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --version <span class="comment"># 查看 Docker 客户端版本</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四-启动与配置"><a href="#四-启动与配置" class="headerlink" title="四. 启动与配置"></a>四. 启动与配置</h2><h3 id="1-启动Docker服务"><a href="#1-启动Docker服务" class="headerlink" title="1. 启动Docker服务"></a>1. 启动Docker服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker <span class="comment"># 设置开机自启</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-配置国内镜像加速器"><a href="#2-配置国内镜像加速器" class="headerlink" title="2. 配置国内镜像加速器"></a>2. 配置国内镜像加速器</h3><p>编辑&#x2F;etc&#x2F;docker&#x2F;daemon.json （若不存在则新建）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line"><span class="string">&quot;registry-mirrors&quot;</span>: [ </span><br><span class="line"><span class="string">&quot;https://docker.m.daocloud.io&quot;</span>, </span><br><span class="line"><span class="string">&quot;https://hub-mirror.c.163.com&quot;</span></span><br><span class="line"> ], </span><br><span class="line"><span class="string">&quot;data-root&quot;</span>: <span class="string">&quot;/mnt/software/docker&quot;</span> <span class="comment"># 可选：修改默认存储路径 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重启服务生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-测试运行"><a href="#3-测试运行" class="headerlink" title="3. 测试运行"></a>3. 测试运行</h3><p>拉取hello-world镜像验证功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hello-world</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
 
 
 
@@ -431,7 +454,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/05/26/【Mysql】简单的增删改查命令/" target="_blank" title="【Mysql】简单的增删改查命令">http://example.com/2024/05/26/【Mysql】简单的增删改查命令/</a>
+    <a href="/2024/05/20/c30b7893c43f/" target="_blank" title="【Docker】服务器安装及配置docker">http://example.com/2024/05/20/c30b7893c43f/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -453,16 +476,16 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2024/07/23/%E3%80%90Vue%E3%80%91Vue%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%8F%8A%E7%94%A8%E6%B3%95/" class="post-nav-link">
+    <a href="/2024/05/26/3f376400b204/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">【Vue】Vue前端开发中路由的基本知识及用法</div>
+        <div class="title-text">【Mysql】简单的增删改查命令</div>
       </div>
       
       <!-- <div class="content">
-        【Vue】Vue前端开发中路由的基本知识及用法一、Vue Router 简介Vue Router 是 Vue.js 官方
+        【Mysql】简单的增删改查命令创建数据库1234create database“数据库名字”# 例：create da
       </div> -->
     </a>
   </div>
@@ -473,15 +496,15 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2024/05/20/%E3%80%90Docker%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEdocker/" class="post-nav-link">
+    <a href="/2024/04/27/217a1ca1cd67/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">【Docker】服务器安装及配置docker</div>
+        <div class="title-text">【hexo】新建及发布文章</div>
       </div>
       <!-- <div class="content">
-        【Docker】服务器安装及配置docker一. 系统要求与兼容性1. 内核版本确保系统内核版本 &gt;&#x3D; 
+        【hexo】新建及发布文章Welcome to Hexo! This is your very first post. 
       </div> -->
     </a>
   </div>
@@ -703,7 +726,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Mysql%E3%80%91%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%91%BD%E4%BB%A4"><span class="toc-text">【Mysql】简单的增删改查命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-text">创建数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A1%A8%E5%90%8D"><span class="toc-text">显示当前数据库的表名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E8%A1%A8%E7%9A%84%E5%AD%97%E6%AE%B5%E4%BF%A1%E6%81%AF"><span class="toc-text">显示表的字段信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE"><span class="toc-text">新增数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">查询数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">修改数据</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Docker%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEdocker"><span class="toc-text">【Docker】服务器安装及配置docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82%E4%B8%8E%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">一. 系统要求与兼容性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC"><span class="toc-text">1. 内核版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">2. 系统兼容性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text">二. 安装前准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%B8%E8%BD%BD%E6%97%A7%E7%89%88%E6%9C%AC-Docker"><span class="toc-text">1. 卸载旧版本 Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85yum-utils%E5%92%8Cdnf%EF%BC%88%E6%96%B0%E4%B8%80%E4%BB%A3%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="toc-text">2. 安装yum-utils和dnf（新一代包管理工具）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85%E5%85%BC%E5%AE%B9%E6%8F%92%E4%BB%B6%EF%BC%88%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-text">3. 安装兼容插件（关键步骤）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%89%E8%A3%85Docker-CE"><span class="toc-text">三. 安装Docker CE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AEDocker%E9%95%9C%E5%83%8F%E6%BA%90"><span class="toc-text">1. 配置Docker镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85Docker-CE%E9%80%9A%E8%BF%87dnf%E5%AE%89%E8%A3%85%E5%B9%B6%E8%B7%B3%E8%BF%87%E6%9C%80%E4%BD%B3%E7%89%88%E6%9C%AC%E6%A3%80%E6%9F%A5%EF%BC%88%E9%81%BF%E5%85%8D%E4%BE%9D%E8%B5%96%E5%86%B2%E7%AA%81%EF%BC%89%EF%BC%9A"><span class="toc-text">2. 安装Docker CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="toc-text">3. 验证安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-text">四. 启动与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8Docker%E6%9C%8D%E5%8A%A1"><span class="toc-text">1. 启动Docker服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="toc-text">2. 配置国内镜像加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C"><span class="toc-text">3. 测试运行</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -736,7 +759,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/08/06/%E3%80%90hexo%E3%80%91%E8%A7%A3%E5%86%B3hexo%E9%A1%B5%E9%9D%A2%E5%9C%B0%E5%9D%80%E6%9C%BA%E5%99%A8%E7%A0%81/" class="post-img " style="background-size: cover; 
+              <a href="/2024/08/06/1ebfad26531f/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -747,7 +770,7 @@
                   <span class="post-date">08-06</span>
                 
               </div>
-              <a class="post-title" href="/2024/08/06/%E3%80%90hexo%E3%80%91%E8%A7%A3%E5%86%B3hexo%E9%A1%B5%E9%9D%A2%E5%9C%B0%E5%9D%80%E6%9C%BA%E5%99%A8%E7%A0%81/">【hexo】解决hexo页面地址机器码</a>
+              <a class="post-title" href="/2024/08/06/1ebfad26531f/">【hexo】解决hexo页面地址机器码</a>
             </div>
           </div>
         
@@ -757,7 +780,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/07/23/%E3%80%90Vue%E3%80%91Vue%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%8F%8A%E7%94%A8%E6%B3%95/" class="post-img " style="background-size: cover; 
+              <a href="/2024/07/23/75fa59ee190e/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -768,7 +791,7 @@
                   <span class="post-date">07-23</span>
                 
               </div>
-              <a class="post-title" href="/2024/07/23/%E3%80%90Vue%E3%80%91Vue%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%8F%8A%E7%94%A8%E6%B3%95/">【Vue】Vue前端开发中路由的基本知识及用法</a>
+              <a class="post-title" href="/2024/07/23/75fa59ee190e/">【Vue】Vue前端开发中路由的基本知识及用法</a>
             </div>
           </div>
         
@@ -778,7 +801,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/05/26/%E3%80%90Mysql%E3%80%91%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%91%BD%E4%BB%A4/" class="post-img " style="background-size: cover; 
+              <a href="/2024/05/26/3f376400b204/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -789,7 +812,7 @@
                   <span class="post-date">05-26</span>
                 
               </div>
-              <a class="post-title" href="/2024/05/26/%E3%80%90Mysql%E3%80%91%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%91%BD%E4%BB%A4/">【Mysql】简单的增删改查命令</a>
+              <a class="post-title" href="/2024/05/26/3f376400b204/">【Mysql】简单的增删改查命令</a>
             </div>
           </div>
         
@@ -799,7 +822,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/05/20/%E3%80%90Docker%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEdocker/" class="post-img " style="background-size: cover; 
+              <a href="/2024/05/20/c30b7893c43f/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -810,7 +833,7 @@
                   <span class="post-date">05-20</span>
                 
               </div>
-              <a class="post-title" href="/2024/05/20/%E3%80%90Docker%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEdocker/">【Docker】服务器安装及配置docker</a>
+              <a class="post-title" href="/2024/05/20/c30b7893c43f/">【Docker】服务器安装及配置docker</a>
             </div>
           </div>
         
@@ -820,7 +843,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/04/27/%E3%80%90hexo%E3%80%91%E6%96%B0%E5%BB%BA%E5%8F%8A%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="post-img " style="background-size: cover; 
+              <a href="/2024/04/27/217a1ca1cd67/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -831,7 +854,7 @@
                   <span class="post-date">04-27</span>
                 
               </div>
-              <a class="post-title" href="/2024/04/27/%E3%80%90hexo%E3%80%91%E6%96%B0%E5%BB%BA%E5%8F%8A%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">【hexo】新建及发布文章</a>
+              <a class="post-title" href="/2024/04/27/217a1ca1cd67/">【hexo】新建及发布文章</a>
             </div>
           </div>
         
