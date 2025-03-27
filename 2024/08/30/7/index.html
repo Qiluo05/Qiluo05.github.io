@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>【hexo】解决hexo页面地址机器码 | Aluo</title>
+  <title>【NVM】NVM安装与配置 | Aluo</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -370,21 +370,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        【hexo】解决hexo页面地址机器码
+        【NVM】NVM安装与配置
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-08-06 |
+          <i class="fas fa-calendar"></i> Published in：2024-08-30 |
         </span>
       
 
@@ -408,13 +408,38 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="【hexo】解决hexo页面地址机器码"><a href="#【hexo】解决hexo页面地址机器码" class="headerlink" title="【hexo】解决hexo页面地址机器码"></a>【hexo】解决hexo页面地址机器码</h1><p>最近发现想把写的文章发给朋友明明在网页上复制的时候是这样的</p>
-<p><img src="/../data/2024/%E5%9C%B0%E5%9D%80.png" class="lazyload placeholder" data-srcset="/../data/2024/%E5%9C%B0%E5%9D%80.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt=" "></p>
-<p>结果发给朋友是这样的</p>
-<p><img src="/../data/2024/%E6%9C%BA%E5%99%A8%E7%A0%81.png" class="lazyload placeholder" data-srcset="/../data/2024/%E6%9C%BA%E5%99%A8%E7%A0%81.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt=" "></p>
-<p>这种情况是因为当你在 URL 中使用中文或其他非 ASCII 字符时，浏览器或服务器会自动将这些字符转换为 URL 编码格式。例如：<br>中文字符 【 被编码为 %E3%80%90<br>中文字符 】 被编码为 %E3%80%91<br>中文字符 的 被编码为 %E7%9A%84</p>
-<p>解决这种情况需要确保你的 Hexo 配置文件中正确设置了 permalink 和 pretty_urls，并且你的服务器支持这些配置。例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: <span class="literal">false</span></span><br><span class="line">  trailing_html: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+        <h1 id="【NVM】NVM安装与配置"><a href="#【NVM】NVM安装与配置" class="headerlink" title="【NVM】NVM安装与配置"></a>【NVM】NVM安装与配置</h1><h2 id="一、安装步骤"><a href="#一、安装步骤" class="headerlink" title="一、安装步骤"></a>一、安装步骤</h2><h3 id="1-下载与安装"><a href="#1-下载与安装" class="headerlink" title="1.下载与安装"></a>1.下载与安装</h3><p>访问NVM Windows官方GitHub页面，下载最新版本的安装包，并按照提示完成安装。</p>
+<h3 id="2-验证安装"><a href="#2-验证安装" class="headerlink" title="2.验证安装"></a>2.验证安装</h3><p>安装完成后，在终端输入nvm –version，若显示版本号则说明安装成功。例如<br><img src="/../data/2024/nvm%E7%89%88%E6%9C%AC.png" class="lazyload placeholder" data-srcset="/../data/2024/nvm%E7%89%88%E6%9C%AC.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt=" "></p>
+<h3 id="3-安装Node-js"><a href="#3-安装Node-js" class="headerlink" title="3.安装Node.js"></a>3.安装Node.js</h3><p>使用NVM安装Node.js，以安装最新版为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure>
+
+<p>安装特定版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 14.17.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-使用安装的Node-js版本"><a href="#4-使用安装的Node-js版本" class="headerlink" title="4.使用安装的Node.js版本"></a>4.使用安装的Node.js版本</h3><p>安装后，需通过NVM使用特定版本的Node.js：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use 14.17.0</span><br></pre></td></tr></table></figure>
+
+<p>设置为默认版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm <span class="built_in">alias</span> default 14.17.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-验证Node-js安装"><a href="#5-验证Node-js安装" class="headerlink" title="5.验证Node.js安装"></a>5.验证Node.js安装</h3><p>输入node -v和npm -v，分别查看Node.js和npm的版本，确认安装无误。</p>
+<h2 id="二、NVM-常用命令"><a href="#二、NVM-常用命令" class="headerlink" title="二、NVM 常用命令"></a>二、NVM 常用命令</h2><h3 id="1-查看已安装的Node-js版本"><a href="#1-查看已安装的Node-js版本" class="headerlink" title="1. 查看已安装的Node.js版本"></a>1. 查看已安装的Node.js版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装指定版本的Node-js"><a href="#2-安装指定版本的Node-js" class="headerlink" title="2. 安装指定版本的Node.js"></a>2. 安装指定版本的Node.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-卸载指定版本的Node-js"><a href="#3-卸载指定版本的Node-js" class="headerlink" title="3. 卸载指定版本的Node.js"></a>3. 卸载指定版本的Node.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm uninstall &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-切换到已安装的Node-js版本"><a href="#4-切换到已安装的Node-js版本" class="headerlink" title="4. 切换到已安装的Node.js版本"></a>4. 切换到已安装的Node.js版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-设置默认Node-js版本"><a href="#5-设置默认Node-js版本" class="headerlink" title="5. 设置默认Node.js版本"></a>5. 设置默认Node.js版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm <span class="built_in">alias</span> default &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-显示当前使用的Node-js版本"><a href="#6-显示当前使用的Node-js版本" class="headerlink" title="6. 显示当前使用的Node.js版本"></a>6. 显示当前使用的Node.js版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、环境变量配置"><a href="#三、环境变量配置" class="headerlink" title="三、环境变量配置"></a>三、环境变量配置</h2><p>在Windows上，NVM通常会自动配置好所需的环境变量。但如果在安装过程中遇到问题，可以手动检查：</p>
+<p>1.打开“系统属性” -&gt; “高级” -&gt; “环境变量”。</p>
+<p>2.在“系统变量”中找到Path，确保NVM的安装目录（如C:\Users&lt;用户名&gt;\AppData\Roaming\nvm）已包含在内。</p>
+<p>3.如果没有，点击“新建”添加NVM目录。</p>
+
       </div>
       <div class="post-tags-categories">
         
@@ -427,7 +452,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/08/06/5/" target="_blank" title="【hexo】解决hexo页面地址机器码">http://example.com/2024/08/06/5/</a>
+    <a href="/2024/08/30/7/" target="_blank" title="【NVM】NVM安装与配置">http://example.com/2024/08/30/7/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -445,39 +470,21 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2024/08/27/6/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">【HTML】前端CSS用法</div>
-      </div>
-      
-      <!-- <div class="content">
-        【HTML】前端CSS用法一、CSS高级选择器1.属性选择器根据元素的属性来选择元素。例如，选择所有带有title属性的
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2024/07/23/4/" class="post-nav-link">
+    <a href="/2024/08/27/6/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">【Vue】Vue前端开发中路由的基本知识及用法</div>
+        <div class="title-text">【HTML】前端CSS用法</div>
       </div>
       <!-- <div class="content">
-        【Vue】Vue前端开发中路由的基本知识及用法一、Vue Router 简介Vue Router 是 Vue.js 官方
+        【HTML】前端CSS用法一、CSS高级选择器1.属性选择器根据元素的属性来选择元素。例如，选择所有带有title属性的
       </div> -->
     </a>
   </div>
@@ -699,7 +706,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90hexo%E3%80%91%E8%A7%A3%E5%86%B3hexo%E9%A1%B5%E9%9D%A2%E5%9C%B0%E5%9D%80%E6%9C%BA%E5%99%A8%E7%A0%81"><span class="toc-text">【hexo】解决hexo页面地址机器码</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90NVM%E3%80%91NVM%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-text">【NVM】NVM安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-text">一、安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="toc-text">1.下载与安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="toc-text">2.验证安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85Node-js"><span class="toc-text">3.安装Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8%E5%AE%89%E8%A3%85%E7%9A%84Node-js%E7%89%88%E6%9C%AC"><span class="toc-text">4.使用安装的Node.js版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%AA%8C%E8%AF%81Node-js%E5%AE%89%E8%A3%85"><span class="toc-text">5.验证Node.js安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81NVM-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">二、NVM 常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%B7%B2%E5%AE%89%E8%A3%85%E7%9A%84Node-js%E7%89%88%E6%9C%AC"><span class="toc-text">1. 查看已安装的Node.js版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84Node-js"><span class="toc-text">2. 安装指定版本的Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8D%B8%E8%BD%BD%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84Node-js"><span class="toc-text">3. 卸载指定版本的Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%87%E6%8D%A2%E5%88%B0%E5%B7%B2%E5%AE%89%E8%A3%85%E7%9A%84Node-js%E7%89%88%E6%9C%AC"><span class="toc-text">4. 切换到已安装的Node.js版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4Node-js%E7%89%88%E6%9C%AC"><span class="toc-text">5. 设置默认Node.js版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E4%BD%BF%E7%94%A8%E7%9A%84Node-js%E7%89%88%E6%9C%AC"><span class="toc-text">6. 显示当前使用的Node.js版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="toc-text">三、环境变量配置</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
