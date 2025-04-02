@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>【Docker】服务器安装及配置docker | Aluo</title>
+  <title>【Docker】Docker容器相关命令 | Aluo</title>
 
   <link rel="icon" type="image/jpeg" href="/medias/logo1.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -370,21 +370,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        【Docker】服务器安装及配置docker
+        【Docker】Docker容器相关命令
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-05-20 |
+          <i class="fas fa-calendar"></i> Published in：2024-09-03 |
         </span>
       
 
@@ -408,39 +408,47 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="【Docker】服务器安装及配置docker"><a href="#【Docker】服务器安装及配置docker" class="headerlink" title="【Docker】服务器安装及配置docker"></a>【Docker】服务器安装及配置docker</h1><h2 id="一-系统要求与兼容性"><a href="#一-系统要求与兼容性" class="headerlink" title="一. 系统要求与兼容性"></a>一. 系统要求与兼容性</h2><h3 id="1-内核版本"><a href="#1-内核版本" class="headerlink" title="1. 内核版本"></a>1. 内核版本</h3><p>确保系统内核版本 &gt;&#x3D; 3.10<br>（Alibaba Cloud Linux 3 默认内核为 5.10+）<br>查看命令：<code>uname -r</code><br>示例输出：<code>5.10.134-13.al8.x86_64</code></p>
-<h3 id="2-系统兼容性"><a href="#2-系统兼容性" class="headerlink" title="2. 系统兼容性"></a>2. 系统兼容性</h3><p>Alibaba Cloud Linux 3 全面兼容 CentOS 8，安装 Docker 时需使用 CentOS 8 的软件源与配置方法。</p>
-<h2 id="二-安装前准备"><a href="#二-安装前准备" class="headerlink" title="二. 安装前准备"></a>二. 安装前准备</h2><h3 id="1-卸载旧版本-Docker"><a href="#1-卸载旧版本-Docker" class="headerlink" title="1. 卸载旧版本 Docker"></a>1. 卸载旧版本 Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-安装yum-utils和dnf（新一代包管理工具）"><a href="#2-安装yum-utils和dnf（新一代包管理工具）" class="headerlink" title="2. 安装yum-utils和dnf（新一代包管理工具）"></a>2. 安装yum-utils和dnf（新一代包管理工具）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2 </span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install dnf</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-安装兼容插件（关键步骤）"><a href="#3-安装兼容插件（关键步骤）" class="headerlink" title="3. 安装兼容插件（关键步骤）"></a>3. 安装兼容插件（关键步骤）</h3><p>Alibaba Cloud Linux 3需安装专用插件以适配Docker的CentOS8源：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf -y install dnf-plugin-releasever-adapter --repo alinux3-plus</span><br></pre></td></tr></table></figure>
-
-<h2 id="三-安装Docker-CE"><a href="#三-安装Docker-CE" class="headerlink" title="三. 安装Docker CE"></a>三. 安装Docker CE</h2><h3 id="1-配置Docker镜像源"><a href="#1-配置Docker镜像源" class="headerlink" title="1. 配置Docker镜像源"></a>1. 配置Docker镜像源</h3><p>使用阿里云镜像源加速下载：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-安装Docker-CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）："><a href="#2-安装Docker-CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）：" class="headerlink" title="2. 安装Docker CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）："></a>2. 安装Docker CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf -y install docker-ce --nobest</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-验证安装"><a href="#3-验证安装" class="headerlink" title="3. 验证安装"></a>3. 验证安装</h3><p>查看已安装的Docker版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf list docker-ce <span class="comment"># 确认版本信息 </span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --version <span class="comment"># 查看 Docker 客户端版本</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="四-启动与配置"><a href="#四-启动与配置" class="headerlink" title="四. 启动与配置"></a>四. 启动与配置</h2><h3 id="1-启动Docker服务"><a href="#1-启动Docker服务" class="headerlink" title="1. 启动Docker服务"></a>1. 启动Docker服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker </span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker <span class="comment"># 设置开机自启</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-配置国内镜像加速器"><a href="#2-配置国内镜像加速器" class="headerlink" title="2. 配置国内镜像加速器"></a>2. 配置国内镜像加速器</h3><p>编辑&#x2F;etc&#x2F;docker&#x2F;daemon.json （若不存在则新建）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line"><span class="string">&quot;registry-mirrors&quot;</span>: [ </span><br><span class="line"><span class="string">&quot;https://docker.m.daocloud.io&quot;</span>, </span><br><span class="line"><span class="string">&quot;https://hub-mirror.c.163.com&quot;</span></span><br><span class="line"> ], </span><br><span class="line"><span class="string">&quot;data-root&quot;</span>: <span class="string">&quot;/mnt/software/docker&quot;</span> <span class="comment"># 可选：修改默认存储路径 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>重启服务生效</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-测试运行"><a href="#3-测试运行" class="headerlink" title="3. 测试运行"></a>3. 测试运行</h3><p>拉取hello-world镜像验证功能</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hello-world</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
-
-
+        <h1 id="【Docker】Docker容器相关命令"><a href="#【Docker】Docker容器相关命令" class="headerlink" title="【Docker】Docker容器相关命令"></a>【Docker】Docker容器相关命令</h1><h2 id="1-查看容器"><a href="#1-查看容器" class="headerlink" title="1.查看容器"></a>1.查看容器</h2><p>查看所有正在运行的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<p>查看所有容器 （包括已停止的）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<h2 id="2-创建并启动一个新的容器"><a href="#2-创建并启动一个新的容器" class="headerlink" title="2.创建并启动一个新的容器"></a>2.创建并启动一个新的容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run &lt;parameters&gt;</span><br></pre></td></tr></table></figure>
+<p>一般形式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=&lt;docker_name&gt; my_container /bin/bash</span><br></pre></td></tr></table></figure>
+<p>-d：让容器在后台运行</p>
+<p>-i：交互模式运行容器</p>
+<p>-t：为容器分配一个伪终端（TTY）</p>
+<p>-it：交互式容器</p>
+<p>-id：守护式容器</p>
+<p>–name&#x3D;<docker_name>：指定容器名称</p>
+<p>以redis为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=doc1 redis:lastest /bin/bash</span><br></pre></td></tr></table></figure>
+<h2 id="3-进入容器"><a href="#3-进入容器" class="headerlink" title="3.进入容器"></a>3.进入容器</h2><p>使用 exec 进入正在运行的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -<span class="built_in">id</span> --name=doc2 nginx:latest /bin/bash</span><br><span class="line">docker <span class="built_in">exec</span> -it doc2 /bin/bash</span><br></pre></td></tr></table></figure>
+<h2 id="4-停止容器"><a href="#4-停止容器" class="headerlink" title="4. 停止容器"></a>4. 停止容器</h2><p>停止指定容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop my_container</span><br></pre></td></tr></table></figure>
+<p>停止所有运行中的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -q)</span><br></pre></td></tr></table></figure>
+<h2 id="5-启动容器"><a href="#5-启动容器" class="headerlink" title="5. 启动容器"></a>5. 启动容器</h2><p>启动已停止的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start my_container</span><br></pre></td></tr></table></figure>
+<h2 id="6-删除容器"><a href="#6-删除容器" class="headerlink" title="6. 删除容器"></a>6. 删除容器</h2><p>删除指定容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> my_container</span><br></pre></td></tr></table></figure>
+<p>强制删除正在运行的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> -f my_container</span><br></pre></td></tr></table></figure>
+<p>删除所有已停止的容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">删除所有已停止的容器</span><br></pre></td></tr></table></figure>
+<h2 id="7-查看容器信息"><a href="#7-查看容器信息" class="headerlink" title="7. 查看容器信息"></a>7. 查看容器信息</h2><p>查看容器日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs my_container</span><br></pre></td></tr></table></figure>
+<p>查看容器资源使用情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看容器资源使用情况</span><br></pre></td></tr></table></figure>
+<p>查看容器详细信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect my_container</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>docker ps 用于查看容器状态。</p>
+<p>docker run 创建并启动新容器。</p>
+<p>docker exec 进入容器。</p>
+<p>docker stop 和 docker start 控制容器运行状态。</p>
+<p>docker rm 删除容器，docker container prune 清理所有已停止容器。</p>
+<p>docker logs、docker stats 和 docker inspect 用于获取容器的日志和状态信息。</p>
 
       </div>
       <div class="post-tags-categories">
@@ -454,7 +462,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/05/20/2/" target="_blank" title="【Docker】服务器安装及配置docker">http://example.com/2024/05/20/2/</a>
+    <a href="/2024/09/03/cm8z9ki700000q4v98vn0a3oo/" target="_blank" title="【Docker】Docker容器相关命令">http://example.com/2024/09/03/cm8z9ki700000q4v98vn0a3oo/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -472,24 +480,6 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2024/05/26/3/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">【Mysql】简单的增删改查命令</div>
-      </div>
-      
-      <!-- <div class="content">
-        【Mysql】简单的增删改查命令创建数据库1234create database“数据库名字”# 例：create da
-      </div> -->
-    </a>
-  </div>
-
 
 
   
@@ -498,13 +488,13 @@
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2024/04/27/1/" class="post-nav-link">
+    <a href="/2024/08/30/7/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">【hexo】新建及发布文章</div>
+        <div class="title-text">【NVM】NVM安装与配置</div>
       </div>
       <!-- <div class="content">
-        【hexo】新建及发布文章Welcome to Hexo! This is your very first post. 
+        【NVM】NVM安装与配置一、安装步骤1.下载与安装访问NVM Windows官方GitHub页面，下载最新版本的安装包
       </div> -->
     </a>
   </div>
@@ -726,7 +716,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Docker%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEdocker"><span class="toc-text">【Docker】服务器安装及配置docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82%E4%B8%8E%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">一. 系统要求与兼容性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC"><span class="toc-text">1. 内核版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">2. 系统兼容性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text">二. 安装前准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%B8%E8%BD%BD%E6%97%A7%E7%89%88%E6%9C%AC-Docker"><span class="toc-text">1. 卸载旧版本 Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85yum-utils%E5%92%8Cdnf%EF%BC%88%E6%96%B0%E4%B8%80%E4%BB%A3%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="toc-text">2. 安装yum-utils和dnf（新一代包管理工具）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85%E5%85%BC%E5%AE%B9%E6%8F%92%E4%BB%B6%EF%BC%88%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-text">3. 安装兼容插件（关键步骤）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%89%E8%A3%85Docker-CE"><span class="toc-text">三. 安装Docker CE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AEDocker%E9%95%9C%E5%83%8F%E6%BA%90"><span class="toc-text">1. 配置Docker镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85Docker-CE%E9%80%9A%E8%BF%87dnf%E5%AE%89%E8%A3%85%E5%B9%B6%E8%B7%B3%E8%BF%87%E6%9C%80%E4%BD%B3%E7%89%88%E6%9C%AC%E6%A3%80%E6%9F%A5%EF%BC%88%E9%81%BF%E5%85%8D%E4%BE%9D%E8%B5%96%E5%86%B2%E7%AA%81%EF%BC%89%EF%BC%9A"><span class="toc-text">2. 安装Docker CE通过dnf安装并跳过最佳版本检查（避免依赖冲突）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="toc-text">3. 验证安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-text">四. 启动与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8Docker%E6%9C%8D%E5%8A%A1"><span class="toc-text">1. 启动Docker服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="toc-text">2. 配置国内镜像加速器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C"><span class="toc-text">3. 测试运行</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Docker%E3%80%91Docker%E5%AE%B9%E5%99%A8%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-text">【Docker】Docker容器相关命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8"><span class="toc-text">1.查看容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="toc-text">2.创建并启动一个新的容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8"><span class="toc-text">3.进入容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8"><span class="toc-text">4. 停止容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="toc-text">5. 启动容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="toc-text">6. 删除容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%BF%A1%E6%81%AF"><span class="toc-text">7. 查看容器信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
