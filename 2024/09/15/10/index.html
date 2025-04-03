@@ -457,10 +457,8 @@
 <li><strong>典型场景</strong><br> 上报错误日志到监控平台<br>显示降级 UI（如错误提示页）</li>
 </ul>
 <h2 id="生命周期整体流程"><a href="#生命周期整体流程" class="headerlink" title="生命周期整体流程"></a>生命周期整体流程</h2><h3 id="beforeCreate-created"><a href="#beforeCreate-created" class="headerlink" title="beforeCreate -&gt; created"></a>beforeCreate -&gt; created</h3><ul>
-<li><p><strong>beforeCreate</strong><br>初始化 Vue 实例，进行数据观测。</p>
-</li>
-<li><p><strong>created</strong><br>完成数据观测，属性与方法的运算，<code>watch</code>、<code>event</code> 事件回调的配置。<br>可调用 <code>methods</code> 中的方法，访问和修改 <code>data</code> 数据触发响应式渲染 DOM，可通过 <code>computed</code> 和 <code>watch</code> 完成数据计算。<br>此时 <code>vm.$el</code> 并没有被创建。</p>
-</li>
+<li><strong>beforeCreate</strong><br>初始化 Vue 实例，进行数据观测。</li>
+<li><strong>created</strong><br>完成数据观测，属性与方法的运算，<code>watch</code>、<code>event</code> 事件回调的配置。<br>可调用 <code>methods</code> 中的方法，访问和修改 <code>data</code> 数据触发响应式渲染 DOM，可通过 <code>computed</code> 和 <code>watch</code> 完成数据计算。<br>此时 <code>vm.$el</code> 并没有被创建。</li>
 </ul>
 <h3 id="created-beforeMount"><a href="#created-beforeMount" class="headerlink" title="created -&gt; beforeMount"></a>created -&gt; beforeMount</h3><ul>
 <li>判断是否存在 <code>el</code> 选项，若不存在则停止编译，直到调用 <code>vm.$mount(el)</code> 才会继续编译。<br>优先级：<code>render &gt; template &gt; outerHTML</code>。<br><code>vm.el</code> 获取到的是挂载 DOM 的。</li>
