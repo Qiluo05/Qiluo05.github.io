@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>【Mysql】简单的增删改查命令 | Aluo</title>
+  <title>【git】git 常用操作整理 | Aluo</title>
 
   <link rel="icon" type="image/jpeg" href="/medias/logo1.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -377,14 +377,14 @@
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        【Mysql】简单的增删改查命令
+        【git】git 常用操作整理
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-05-26 |
+          <i class="fas fa-calendar"></i> Published in：2024-09-09 |
         </span>
       
 
@@ -408,17 +408,41 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="【Mysql】简单的增删改查命令"><a href="#【Mysql】简单的增删改查命令" class="headerlink" title="【Mysql】简单的增删改查命令"></a>【Mysql】简单的增删改查命令</h1><h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create database“数据库名字”</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例：create database test-16</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以创建评论表为例</span></span><br><span class="line">create table comment (</span><br><span class="line">    <span class="built_in">id</span> int</span><br><span class="line">    name varchar(20)</span><br><span class="line">    content varchar(125)</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="显示当前数据库的表名"><a href="#显示当前数据库的表名" class="headerlink" title="显示当前数据库的表名"></a>显示当前数据库的表名</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;  </span><br></pre></td></tr></table></figure>
-<h2 id="显示表的字段信息"><a href="#显示表的字段信息" class="headerlink" title="显示表的字段信息"></a>显示表的字段信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show create table <span class="string">&#x27;表名&#x27;</span>;</span><br><span class="line"><span class="comment"># 例如：show create table comment;</span></span><br></pre></td></tr></table></figure>
-<h2 id="新增数据"><a href="#新增数据" class="headerlink" title="新增数据"></a>新增数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name (column1,</span><br><span class="line">column2,)</span><br><span class="line">VALUES(vulue1,vulue2,..);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：insert into comment(id,name,content)</span></span><br><span class="line"><span class="comment">#     -&gt;values(1,&quot;Qiluo&quot;,&quot;ysagh&quot;);</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * from 表名；</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如:select * from comment;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> 某一字段 from comment;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：select name,content from comment;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">updata 表名 <span class="built_in">set</span> 字段名 = vulue <span class="built_in">where</span> 条件；</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如：update comment set name=&quot;Qiluo&quot; where id=1;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
+        <h1 id="【git】git-常用操作整理"><a href="#【git】git-常用操作整理" class="headerlink" title="【git】git 常用操作整理"></a>【git】git 常用操作整理</h1><h2 id="常用操作流程与代码"><a href="#常用操作流程与代码" class="headerlink" title="常用操作流程与代码"></a>常用操作流程与代码</h2><h3 id="1-创建本地仓库"><a href="#1-创建本地仓库" class="headerlink" title="1.创建本地仓库"></a>1.创建本地仓库</h3><p>在项目目录下执行以下命令，可将该目录初始化为一个Git仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h3 id="2-克隆远程仓库"><a href="#2-克隆远程仓库" class="headerlink" title="2.克隆远程仓库"></a>2.克隆远程仓库</h3><p>将远程仓库的代码复制到本地：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;远程仓库地址&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-添加文件到暂存区"><a href="#3-添加文件到暂存区" class="headerlink" title="3.添加文件到暂存区"></a>3.添加文件到暂存区</h3><p>将文件添加到暂存区：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
+<p>添加所有修改的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<h3 id="4-提交文件到本地仓库"><a href="#4-提交文件到本地仓库" class="headerlink" title="4.提交文件到本地仓库"></a>4.提交文件到本地仓库</h3><p>将文件提交到本地仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;提交说明&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-查看状态"><a href="#5-查看状态" class="headerlink" title="5.查看状态"></a>5.查看状态</h3><p>查看当前仓库的状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h3 id="6-查看提交历史"><a href="#6-查看提交历史" class="headerlink" title="6.查看提交历史"></a>6.查看提交历史</h3><p>查看仓库的提交历史：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-推送本地代码到远程仓库"><a href="#7-推送本地代码到远程仓库" class="headerlink" title="7.推送本地代码到远程仓库"></a>7.推送本地代码到远程仓库</h3><p>将本地更改推送到远程仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="8-从远程仓库拉取代码"><a href="#8-从远程仓库拉取代码" class="headerlink" title="8.从远程仓库拉取代码"></a>8.从远程仓库拉取代码</h3><p>拉取远程仓库的最新代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="9-创建和切换分支"><a href="#9-创建和切换分支" class="headerlink" title="9.创建和切换分支"></a>9.创建和切换分支</h3><p>创建新分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>切换到指定分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>创建并切换到新分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="10-合并分支"><a href="#10-合并分支" class="headerlink" title="10.合并分支"></a>10.合并分支</h3><p>将分支的更改合并到目标分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;要合并的分支名&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="操作流程示例"><a href="#操作流程示例" class="headerlink" title="操作流程示例"></a>操作流程示例</h2><h3 id="1-初始化本地仓库："><a href="#1-初始化本地仓库：" class="headerlink" title="1.初始化本地仓库："></a>1.初始化本地仓库：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> my_project</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my_project</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h3 id="2-创建并编辑文件："><a href="#2-创建并编辑文件：" class="headerlink" title="2.创建并编辑文件："></a>2.创建并编辑文件：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> README.md</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;This is my project&quot;</span> &gt; README.md</span><br></pre></td></tr></table></figure>
+<h3 id="3-添加文件到暂存区："><a href="#3-添加文件到暂存区：" class="headerlink" title="3.添加文件到暂存区："></a>3.添加文件到暂存区：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README.md</span><br></pre></td></tr></table></figure>
+<h3 id="4-提交文件到本地仓库："><a href="#4-提交文件到本地仓库：" class="headerlink" title="4.提交文件到本地仓库："></a>4.提交文件到本地仓库：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Add README file&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-在GitHub上创建远程仓库，并关联本地仓库："><a href="#5-在GitHub上创建远程仓库，并关联本地仓库：" class="headerlink" title="5.在GitHub上创建远程仓库，并关联本地仓库："></a>5.在GitHub上创建远程仓库，并关联本地仓库：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &lt;远程仓库地址&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="6-推送本地代码到远程仓库："><a href="#6-推送本地代码到远程仓库：" class="headerlink" title="6.推送本地代码到远程仓库："></a>6.推送本地代码到远程仓库：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
       </div>
       <div class="post-tags-categories">
         
@@ -431,7 +455,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/05/26/3/" target="_blank" title="【Mysql】简单的增删改查命令">http://example.com/2024/05/26/3/</a>
+    <a href="/2024/09/09/9/" target="_blank" title="【git】git 常用操作整理">http://example.com/2024/09/09/9/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -449,39 +473,23 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2024/07/23/4/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">【Vue】Vue前端开发中路由的基本知识及用法</div>
-      </div>
-      
-      <!-- <div class="content">
-        【Vue】Vue前端开发中路由的基本知识及用法一、Vue Router 简介Vue Router 是 Vue.js 官方
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2024/05/20/2/" class="post-nav-link">
+    <a href="/2024/09/03/8/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">【Docker】服务器安装及配置docker</div>
+        <div class="title-text">【Docker】Docker容器相关命令</div>
       </div>
       <!-- <div class="content">
-        【Docker】服务器安装及配置docker一. 系统要求与兼容性1. 内核版本确保系统内核版本 &gt;&#x3D; 
+        【Docker】Docker容器相关命令1.查看容器查看所有正在运行的容器
+1docker ps
+查看所有容器 （包括已
       </div> -->
     </a>
   </div>
@@ -703,7 +711,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Mysql%E3%80%91%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%91%BD%E4%BB%A4"><span class="toc-text">【Mysql】简单的增删改查命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-text">创建数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A1%A8%E5%90%8D"><span class="toc-text">显示当前数据库的表名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E8%A1%A8%E7%9A%84%E5%AD%97%E6%AE%B5%E4%BF%A1%E6%81%AF"><span class="toc-text">显示表的字段信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE"><span class="toc-text">新增数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">查询数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">修改数据</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90git%E3%80%91git-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86"><span class="toc-text">【git】git 常用操作整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%B8%8E%E4%BB%A3%E7%A0%81"><span class="toc-text">常用操作流程与代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-text">1.创建本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%8B%E9%9A%86%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">2.克隆远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9A%82%E5%AD%98%E5%8C%BA"><span class="toc-text">3.添加文件到暂存区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-text">4.提交文件到本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E7%8A%B6%E6%80%81"><span class="toc-text">5.查看状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2"><span class="toc-text">6.查看提交历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%8E%A8%E9%80%81%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">7.推送本地代码到远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8B%89%E5%8F%96%E4%BB%A3%E7%A0%81"><span class="toc-text">8.从远程仓库拉取代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-text">9.创建和切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-text">10.合并分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%A4%BA%E4%BE%8B"><span class="toc-text">操作流程示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%EF%BC%9A"><span class="toc-text">1.初始化本地仓库：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%B9%B6%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-text">2.创建并编辑文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0%E6%9A%82%E5%AD%98%E5%8C%BA%EF%BC%9A"><span class="toc-text">3.添加文件到暂存区：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%EF%BC%9A"><span class="toc-text">4.提交文件到本地仓库：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9C%A8GitHub%E4%B8%8A%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%EF%BC%8C%E5%B9%B6%E5%85%B3%E8%81%94%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%EF%BC%9A"><span class="toc-text">5.在GitHub上创建远程仓库，并关联本地仓库：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%8E%A8%E9%80%81%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%EF%BC%9A"><span class="toc-text">6.推送本地代码到远程仓库：</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
