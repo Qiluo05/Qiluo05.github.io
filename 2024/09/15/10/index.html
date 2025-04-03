@@ -408,123 +408,84 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="Vue-生命周期全解析：从生命诞生到轮回的组件史诗"><a href="#Vue-生命周期全解析：从生命诞生到轮回的组件史诗" class="headerlink" title="Vue 生命周期全解析：从生命诞生到轮回的组件史诗"></a>Vue 生命周期全解析：从生命诞生到轮回的组件史诗</h1><hr>
-<h2 id="一、生命诞生篇（Creation）"><a href="#一、生命诞生篇（Creation）" class="headerlink" title="一、生命诞生篇（Creation）"></a>一、生命诞生篇（Creation）</h2><h3 id="1-beforeCreate（胚胎萌芽）"><a href="#1-beforeCreate（胚胎萌芽）" class="headerlink" title="1. beforeCreate（胚胎萌芽）"></a>1. beforeCreate（胚胎萌芽）</h3><ul>
-<li><strong>🌱 自然隐喻</strong><br>如同宇宙初开的星云，组件仅有基础框架。数据观测（如 DNA 未转录）和事件系统（如神经未连接）尚未形成。</li>
-<li><strong>💡 技术本质</strong><br>组件实例如受精卵刚形成，仅有基础结构。此时数据观测（data）、事件监听（methods）均未初始化，无法访问任何响应式数据。常用于插件开发中的基础配置初始化 </li>
-<li><strong>✨ 情感升华</strong><br>如同在实验室搭建培养皿，此处适合植入“生命监测仪”。</li>
+        <h1 id="Vue-生命周期全解析：从生命诞生到轮回的组件史诗"><a href="#Vue-生命周期全解析：从生命诞生到轮回的组件史诗" class="headerlink" title="Vue 生命周期全解析：从生命诞生到轮回的组件史诗"></a>Vue 生命周期全解析：从生命诞生到轮回的组件史诗</h1><h2 id="一、生命诞生篇（Creation）"><a href="#一、生命诞生篇（Creation）" class="headerlink" title="一、生命诞生篇（Creation）"></a>一、生命诞生篇（Creation）</h2><h3 id="1-beforeCreate"><a href="#1-beforeCreate" class="headerlink" title="1. beforeCreate"></a>1. beforeCreate</h3><p>  如同宇宙初开的星云，组件仅有基础框架。数据观测和事件系统尚未形成。</p>
+<ul>
+<li><strong>技术本质</strong><br> 组件实例目前仅有基础结构，此时数据观测（data）、事件监听（methods）均未初始化，无法访问任何响应式数据。常用于插件开发中的基础配置初始化 </li>
+<li><strong>典型场景</strong><br>插件基础配置（如Vuex状态注入）</li>
 </ul>
-<h3 id="2-created（生命初啼）"><a href="#2-created（生命初啼）" class="headerlink" title="2. created（生命初啼）"></a>2. created（生命初啼）</h3><ul>
-<li><p><strong>👶 自然隐喻</strong><br>婴儿完成心肺构建，<code>data</code> 响应式化（血液流动），但未与 DOM 世界连接。</p>
-</li>
-<li><p><strong>🔧 技术实践</strong><br>组件完成呼吸与心跳的建立——即数据响应式化（data、methods 就绪），但尚未与 DOM 建立联系。此时可发起异步请求、计算属性初始化，是数据获取的黄金时机。</p>
-<p>注意：操作 DOM 需通过 <code>this.$nextTick</code> 等待。</p>
-</li>
-<li><p><strong>💬 诗意类比</strong><br>宛如新生儿首次呼吸，初始化购物车总价等核心数据。</p>
-</li>
+<h3 id="2-created"><a href="#2-created" class="headerlink" title="2. created"></a>2. created</h3><p>  完成初步构建，<code>data</code> 响应式化（血液流动），但未与 DOM 世界连接。</p>
+<ul>
+<li><strong>技术本质</strong><br>  数据响应式化（data、methods 就绪），但尚未与 DOM 建立联系。此时可发起异步请求、计算属性初始化，是数据获取的黄金时机。<br> 注意：操作 DOM 需通过 <code>this.$nextTick</code> 等待。</li>
+<li><strong>典型场景</strong><br>发起 API 请求（如加载用户数据）<br>初始化非 DOM 依赖的第三方库<br>数据预处理（如时间格式化）</li>
 </ul>
-<hr>
-<h2 id="二、成长觉醒篇（Mounting）"><a href="#二、成长觉醒篇（Mounting）" class="headerlink" title="二、成长觉醒篇（Mounting）"></a>二、成长觉醒篇（Mounting）</h2><h3 id="3-beforeMount（破茧前夕）"><a href="#3-beforeMount（破茧前夕）" class="headerlink" title="3. beforeMount（破茧前夕）"></a>3. beforeMount（破茧前夕）</h3><ul>
-<li><strong>🦋 自然隐喻</strong><br>虚拟 DOM 已编织成茧，但真实 DOM 仍是未孵化的蛹（如 <code>&#123;&#123;data&#125;&#125;</code> 占位符）。</li>
-<li><strong>⚙️ 技术细节</strong><br>虚拟 DOM 已编译完成，但真实 DOM 仍为占位符状态（如 ）。此时可修改模板逻辑，但直接操作 DOM 无效。Vue 按 <code>render &gt; template &gt; outerHTML</code> 优先级选择模板。</li>
-<li><strong>🌰 场景示例</strong><br>预加载多语言模板，如幼鸟调整蛋壳内羽毛方向。</li>
+<h2 id="二、成长觉醒篇（Mounting）"><a href="#二、成长觉醒篇（Mounting）" class="headerlink" title="二、成长觉醒篇（Mounting）"></a>二、成长觉醒篇（Mounting）</h2><h3 id="3-beforeMount"><a href="#3-beforeMount" class="headerlink" title="3. beforeMount"></a>3. beforeMount</h3><p>  虚拟 DOM 已编织成茧，但真实 DOM 仍是未孵化的蛹（如 <code>&#123;&#123;data&#125;&#125;</code> 占位符）。</p>
+<ul>
+<li><strong>技术本质</strong><br>  虚拟 DOM 已编译完成，但真实 DOM 仍为占位符状态（如 ）。此时可修改模板逻辑，但直接操作 DOM 无效。Vue 按 <code>render &gt; template &gt; outerHTML</code> 优先级选择模板。</li>
+<li><strong>典型场景</strong><br>预加载静态资源（如多语言模板）<br>修改模板渲染逻辑</li>
 </ul>
-<h3 id="4-mounted（振翅高飞）"><a href="#4-mounted（振翅高飞）" class="headerlink" title="4. mounted（振翅高飞）"></a>4. mounted（振翅高飞）</h3><ul>
-<li><strong>🦅 自然隐喻</strong><br>组件已挂载到 DOM 树梢，<code>$el</code> 可操作（如初始化图表库）。</li>
-<li><strong>⚙️ 技术细节</strong><br>组件正式挂载到页面，$el 可操作。适合初始化第三方库（如 ECharts）、绑定事件监听或执行依赖 DOM 的操作 </li>
-<li><strong>⚠️ 风险预警</strong><br>子组件可能未挂载，需用 <code>this.$nextTick</code> 等待。</li>
+<h3 id="4-mounted"><a href="#4-mounted" class="headerlink" title="4. mounted"></a>4. mounted</h3><p>  组件已挂载到 DOM 树梢，<code>$el</code> 可操作（如初始化图表库）。</p>
+<ul>
+<li><strong>技术本质</strong><br>  组件正式挂载到页面，$el 可操作。适合初始化第三方库（如 ECharts）、绑定事件监听或执行依赖 DOM 的操作 </li>
+<li><strong>典型场景</strong><br>初始化 ECharts&#x2F;D3 图表<br>绑定滚动&#x2F;窗口大小监听事件<br>操作 DOM 节点（如聚焦输入框）</li>
 </ul>
-<hr>
-<h2 id="三、适应进化篇（Updating）"><a href="#三、适应进化篇（Updating）" class="headerlink" title="三、适应进化篇（Updating）"></a>三、适应进化篇（Updating）</h2><h3 id="5-beforeUpdate（风暴预警）"><a href="#5-beforeUpdate（风暴预警）" class="headerlink" title="5. beforeUpdate（风暴预警）"></a>5. beforeUpdate（风暴预警）</h3><ul>
-<li><strong>🌪️ 自然隐喻</strong><br>数据变化如气象突变，虚拟 DOM 重建避难所，真实 DOM 仍平静。</li>
-<li><strong>⚙️ 技术细节</strong><br>数据变化触发更新流程，此时 DOM 尚未重新渲染。可捕获更新前的状态，用于对比或记录快照 。若在此阶段修改数据，不会触发额外更新，避免无限循环 。</li>
-<li><strong>🛡️ 安全机制</strong><br>修改数据不会触发连锁更新（台风眼中的安全）。</li>
+<h2 id="三、适应进化篇（Updating）"><a href="#三、适应进化篇（Updating）" class="headerlink" title="三、适应进化篇（Updating）"></a>三、适应进化篇（Updating）</h2><h3 id="5-beforeUpdate"><a href="#5-beforeUpdate" class="headerlink" title="5. beforeUpdate"></a>5. beforeUpdate</h3><p>  数据变化如气象突变，虚拟 DOM 重建避难所，真实 DOM 仍平静。</p>
+<ul>
+<li><strong>技术本质</strong><br>  数据变化触发更新流程，此时 DOM 尚未重新渲染。可捕获更新前的状态，用于对比或记录快照 。若在此阶段修改数据，不会触发额外更新，避免无限循环 。</li>
+<li><strong>典型场景</strong><br>记录更新前的滚动位置<br>对比新旧数据差异</li>
 </ul>
-<h3 id="6-updated（雨后天晴）"><a href="#6-updated（雨后天晴）" class="headerlink" title="6. updated（雨后天晴）"></a>6. updated（雨后天晴）</h3><ul>
-<li><strong>🌈 自然隐喻</strong><br>DOM 与数据完成同步，可重置轮播图或调整布局。</li>
-<li><strong>⚙️ 技术细节</strong><br>DOM 已同步最新数据，可操作更新后的元素。常用于调整布局或更新依赖 DOM 的插件（如轮播图重置）</li>
-<li><strong>☠️ 危险禁区</strong><br>避免在此修改数据，否则可能引发二次更新。</li>
+<h3 id="6-updated"><a href="#6-updated" class="headerlink" title="6. updated"></a>6. updated</h3><p>  DOM 与数据完成同步，可重置轮播图或调整布局。</p>
+<ul>
+<li><strong>技术本质</strong><br>  DOM 已同步最新数据，可操作更新后的元素。常用于调整布局或更新依赖 DOM 的插件（如轮播图重置）</li>
+<li><strong>典型场景</strong><br>调整动态布局（如瀑布流重排）<br>重置轮播图&#x2F;动画状态</li>
 </ul>
-<hr>
-<h2 id="四、生命轮回篇（Destruction）"><a href="#四、生命轮回篇（Destruction）" class="headerlink" title="四、生命轮回篇（Destruction）"></a>四、生命轮回篇（Destruction）</h2><h3 id="7-beforeDestroy（落叶归根）"><a href="#7-beforeDestroy（落叶归根）" class="headerlink" title="7. beforeDestroy（落叶归根）"></a>7. beforeDestroy（落叶归根）</h3><ul>
-<li><strong>🍂 自然隐喻</strong><br>组件即将销毁，需清理定时器、解绑事件。</li>
-<li><strong>⏳ 典型场景</strong><br>关闭 WebSocket 连接，清除临时数据。</li>
-<li><strong>⚙️ 技术细节</strong><br>实例仍完整可用，但即将销毁。需清理定时器、解绑全局事件（如 window.resize）、取消网络请求，防止内存泄漏。关闭 WebSocket 连接或清除本地存储的临时数据。</li>
+<h2 id="四、生命轮回篇（Destruction）"><a href="#四、生命轮回篇（Destruction）" class="headerlink" title="四、生命轮回篇（Destruction）"></a>四、生命轮回篇（Destruction）</h2><h3 id="7-beforeDestroy"><a href="#7-beforeDestroy" class="headerlink" title="7. beforeDestroy"></a>7. beforeDestroy</h3><p>  组件即将销毁，需清理定时器、解绑事件。</p>
+<ul>
+<li><strong>技术本质</strong><br>  实例仍完整可用，但即将销毁。需清理定时器、解绑全局事件（如 window.resize）、取消网络请求，防止内存泄漏。关闭 WebSocket 连接或清除本地存储的临时数据。</li>
+<li><strong>典型场景</strong><br>关闭 WebSocket 连接，清除临时数据。<br>移除 window.addEventListener 事件<br>清除定时器（setInterval）</li>
 </ul>
-<h3 id="8-destroyed（涅槃重生）"><a href="#8-destroyed（涅槃重生）" class="headerlink" title="8. destroyed（涅槃重生）"></a>8. destroyed（涅槃重生）</h3><ul>
-<li><strong>🔥 自然隐喻</strong><br>实例销毁，DOM 墓碑仍存，需手动移除节点。</li>
-<li><strong>⚙️ 技术细节</strong><br>实例完全销毁，所有子组件和监听器被移除。但 DOM 元素仍存在，需手动清理（如父组件移除子节点）</li>
+<h3 id="8-destroyed"><a href="#8-destroyed" class="headerlink" title="8. destroyed"></a>8. destroyed</h3><p>  实例销毁，DOM 墓碑仍存，需手动移除节点。</p>
+<ul>
+<li><strong>技术本质</strong><br>  实例完全销毁，所有子组件和监听器被移除。但 DOM 元素仍存在，需手动清理（如父组件移除子节点） </li>
+<li><strong>典型场景</strong><br>父组件手动移除 DOM 节点（v-if 控制）<br>释放内存占用</li>
 </ul>
-<hr>
-<h2 id="五、特殊生命形态"><a href="#五、特殊生命形态" class="headerlink" title="五、特殊生命形态"></a>五、特殊生命形态</h2><h3 id="9-activated-deactivated（冬眠与苏醒）"><a href="#9-activated-deactivated（冬眠与苏醒）" class="headerlink" title="9. activated&#x2F;deactivated（冬眠与苏醒）"></a>9. activated&#x2F;deactivated（冬眠与苏醒）</h3><ul>
-<li><strong>❄️ 应用场景</strong><br>缓存组件激活时刷新数据，停用时暂停视频播放。</li>
-<li><strong>⚙️ 技术细节</strong><br>用于 keep-alive 缓存的组件，实现状态保留与恢复。如返回页面时刷新数据（activated），离开时暂停视频播放（deactivated）</li>
+<h2 id="五、特殊生命形态"><a href="#五、特殊生命形态" class="headerlink" title="五、特殊生命形态"></a>五、特殊生命形态</h2><h3 id="9-activated-deactivated"><a href="#9-activated-deactivated" class="headerlink" title="9. activated&#x2F;deactivated"></a>9. activated&#x2F;deactivated</h3><ul>
+<li><strong>技术本质</strong><br>  用于 keep-alive 缓存的组件，实现状态保留与恢复。如返回页面时刷新数据（activated），离开时暂停视频播放（deactivated） </li>
+<li><strong>典型场景</strong><br>activated：返回页面时刷新数据<br>deactivated：离开页面时暂停视频播放</li>
 </ul>
 <h3 id="10-errorCaptured（生命救护）"><a href="#10-errorCaptured（生命救护）" class="headerlink" title="10. errorCaptured（生命救护）"></a>10. errorCaptured（生命救护）</h3><ul>
-<li><strong>🚑 应急机制</strong><br>捕获子孙组件错误，上报监控或降级界面。</li>
-<li><strong>⚙️ 技术细节</strong><br>捕获子孙组件的错误，可用于统一错误上报或优雅降级处理 </li>
-<li><strong>🛡️ 防御艺术</strong><br>添加错误边界组件，如程序穿防弹衣。</li>
+<li><strong>技术本质</strong><br>  捕获子孙组件的错误，可用于统一错误上报或优雅降级处理 </li>
+<li><strong>典型场景</strong><br> 上报错误日志到监控平台<br>显示降级 UI（如错误提示页）</li>
 </ul>
-<hr>
-<h2 id="生命周期全景图鉴"><a href="#生命周期全景图鉴" class="headerlink" title="生命周期全景图鉴"></a>生命周期全景图鉴</h2><table>
-<thead>
-<tr>
-<th>生命周期</th>
-<th>自然隐喻</th>
-<th>技术要义</th>
-<th>情感共鸣点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>beforeCreate</td>
-<td>星云凝聚</td>
-<td>框架初始化</td>
-<td>创世前的寂静</td>
-</tr>
-<tr>
-<td>created</td>
-<td>胚胎心跳</td>
-<td>数据响应式化</td>
-<td>新生命的悸动</td>
-</tr>
-<tr>
-<td>beforeMount</td>
-<td>破茧前夜</td>
-<td>模板编译</td>
-<td>黎明前的期待</td>
-</tr>
-<tr>
-<td>mounted</td>
-<td>雏鹰首飞</td>
-<td>DOM 可操作</td>
-<td>成长的喜悦</td>
-</tr>
-<tr>
-<td>beforeUpdate</td>
-<td>风暴预警</td>
-<td>新旧状态快照</td>
-<td>变革前的阵痛</td>
-</tr>
-<tr>
-<td>updated</td>
-<td>灾后重建</td>
-<td>DOM 同步完成</td>
-<td>重获新生的释然</td>
-</tr>
-<tr>
-<td>beforeDestroy</td>
-<td>秋叶飘零</td>
-<td>资源清理</td>
-<td>离别的哀伤</td>
-</tr>
-<tr>
-<td>destroyed</td>
-<td>化作春泥</td>
-<td>实例销毁</td>
-<td>轮回重生的希望</td>
-</tr>
-</tbody></table>
-<hr>
+<h2 id="生命周期整体流程"><a href="#生命周期整体流程" class="headerlink" title="生命周期整体流程"></a>生命周期整体流程</h2><h3 id="beforeCreate-created"><a href="#beforeCreate-created" class="headerlink" title="beforeCreate -&gt; created"></a>beforeCreate -&gt; created</h3><ul>
+<li><p><strong>beforeCreate</strong><br>初始化 Vue 实例，进行数据观测。</p>
+</li>
+<li><p><strong>created</strong><br>完成数据观测，属性与方法的运算，<code>watch</code>、<code>event</code> 事件回调的配置。<br>可调用 <code>methods</code> 中的方法，访问和修改 <code>data</code> 数据触发响应式渲染 DOM，可通过 <code>computed</code> 和 <code>watch</code> 完成数据计算。<br>此时 <code>vm.$el</code> 并没有被创建。</p>
+</li>
+</ul>
+<h3 id="created-beforeMount"><a href="#created-beforeMount" class="headerlink" title="created -&gt; beforeMount"></a>created -&gt; beforeMount</h3><ul>
+<li>判断是否存在 <code>el</code> 选项，若不存在则停止编译，直到调用 <code>vm.$mount(el)</code> 才会继续编译。<br>优先级：<code>render &gt; template &gt; outerHTML</code>。<br><code>vm.el</code> 获取到的是挂载 DOM 的。</li>
+</ul>
+<h3 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h3><ul>
+<li>在此阶段可获取到 <code>vm.el</code>。<br>此阶段 <code>vm.el</code> 虽已完成 DOM 初始化，但并未挂载在 <code>el</code> 选项上。</li>
+</ul>
+<h3 id="beforeMount-mounted"><a href="#beforeMount-mounted" class="headerlink" title="beforeMount -&gt; mounted"></a>beforeMount -&gt; mounted</h3><ul>
+<li>此阶段 <code>vm.el</code> 完成挂载，<code>vm.$el</code> 生成的 DOM 替换了 <code>el</code> 选项所对应的 DOM。</li>
+</ul>
+<h3 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h3><ul>
+<li><code>vm.el</code> 已完成 DOM 的挂载与渲染，此刻打印 <code>vm.$el</code>，发现之前的挂载点及内容已被替换成新的 DOM。</li>
+</ul>
+<h3 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h3><ul>
+<li>更新的数据必须是被渲染在模板上的（<code>el</code>、<code>template</code>、<code>render</code> 之一）。<br>此时 view 层还未更新。<br>若在 <code>beforeUpdate</code> 中再次修改数据，不会再次触发更新方法。</li>
+</ul>
+<h3 id="updated"><a href="#updated" class="headerlink" title="updated"></a>updated</h3><ul>
+<li>完成 view 层的更新。<br>若在 <code>updated</code> 中再次修改数据，会再次触发更新方法（<code>beforeUpdate</code>、<code>updated</code>）。</li>
+</ul>
+<h3 id="beforeDestroy"><a href="#beforeDestroy" class="headerlink" title="beforeDestroy"></a>beforeDestroy</h3><ul>
+<li>实例被销毁前调用，此时实例属性与方法仍可访问。</li>
+</ul>
+<h3 id="destroyed"><a href="#destroyed" class="headerlink" title="destroyed"></a>destroyed</h3><ul>
+<li>完全销毁一个实例。可清理它与其它实例的连接，解绑它的全部指令及事件监听器。<br>并不能清除 DOM，仅仅销毁实例。</li>
+</ul>
 <h2 id="六、开发者心法"><a href="#六、开发者心法" class="headerlink" title="六、开发者心法"></a>六、开发者心法</h2><ol>
 <li><strong>生命节奏法则</strong><br>数据请求宜早（<code>created</code>），DOM 操作宜迟（<code>mounted</code>）。</li>
 <li><strong>生态平衡原则</strong><br>更新阶段慎改数据，销毁阶段必清资源。</li>
@@ -818,7 +779,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9A%E4%BB%8E%E7%94%9F%E5%91%BD%E8%AF%9E%E7%94%9F%E5%88%B0%E8%BD%AE%E5%9B%9E%E7%9A%84%E7%BB%84%E4%BB%B6%E5%8F%B2%E8%AF%97"><span class="toc-text">Vue 生命周期全解析：从生命诞生到轮回的组件史诗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%9F%E5%91%BD%E8%AF%9E%E7%94%9F%E7%AF%87%EF%BC%88Creation%EF%BC%89"><span class="toc-text">一、生命诞生篇（Creation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-beforeCreate%EF%BC%88%E8%83%9A%E8%83%8E%E8%90%8C%E8%8A%BD%EF%BC%89"><span class="toc-text">1. beforeCreate（胚胎萌芽）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-created%EF%BC%88%E7%94%9F%E5%91%BD%E5%88%9D%E5%95%BC%EF%BC%89"><span class="toc-text">2. created（生命初啼）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%88%90%E9%95%BF%E8%A7%89%E9%86%92%E7%AF%87%EF%BC%88Mounting%EF%BC%89"><span class="toc-text">二、成长觉醒篇（Mounting）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-beforeMount%EF%BC%88%E7%A0%B4%E8%8C%A7%E5%89%8D%E5%A4%95%EF%BC%89"><span class="toc-text">3. beforeMount（破茧前夕）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-mounted%EF%BC%88%E6%8C%AF%E7%BF%85%E9%AB%98%E9%A3%9E%EF%BC%89"><span class="toc-text">4. mounted（振翅高飞）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%80%82%E5%BA%94%E8%BF%9B%E5%8C%96%E7%AF%87%EF%BC%88Updating%EF%BC%89"><span class="toc-text">三、适应进化篇（Updating）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-beforeUpdate%EF%BC%88%E9%A3%8E%E6%9A%B4%E9%A2%84%E8%AD%A6%EF%BC%89"><span class="toc-text">5. beforeUpdate（风暴预警）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-updated%EF%BC%88%E9%9B%A8%E5%90%8E%E5%A4%A9%E6%99%B4%EF%BC%89"><span class="toc-text">6. updated（雨后天晴）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%94%9F%E5%91%BD%E8%BD%AE%E5%9B%9E%E7%AF%87%EF%BC%88Destruction%EF%BC%89"><span class="toc-text">四、生命轮回篇（Destruction）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-beforeDestroy%EF%BC%88%E8%90%BD%E5%8F%B6%E5%BD%92%E6%A0%B9%EF%BC%89"><span class="toc-text">7. beforeDestroy（落叶归根）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-destroyed%EF%BC%88%E6%B6%85%E6%A7%83%E9%87%8D%E7%94%9F%EF%BC%89"><span class="toc-text">8. destroyed（涅槃重生）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%89%B9%E6%AE%8A%E7%94%9F%E5%91%BD%E5%BD%A2%E6%80%81"><span class="toc-text">五、特殊生命形态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-activated-deactivated%EF%BC%88%E5%86%AC%E7%9C%A0%E4%B8%8E%E8%8B%8F%E9%86%92%EF%BC%89"><span class="toc-text">9. activated&#x2F;deactivated（冬眠与苏醒）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-errorCaptured%EF%BC%88%E7%94%9F%E5%91%BD%E6%95%91%E6%8A%A4%EF%BC%89"><span class="toc-text">10. errorCaptured（生命救护）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%85%A8%E6%99%AF%E5%9B%BE%E9%89%B4"><span class="toc-text">生命周期全景图鉴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%83%E6%B3%95"><span class="toc-text">六、开发者心法</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9A%E4%BB%8E%E7%94%9F%E5%91%BD%E8%AF%9E%E7%94%9F%E5%88%B0%E8%BD%AE%E5%9B%9E%E7%9A%84%E7%BB%84%E4%BB%B6%E5%8F%B2%E8%AF%97"><span class="toc-text">Vue 生命周期全解析：从生命诞生到轮回的组件史诗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%9F%E5%91%BD%E8%AF%9E%E7%94%9F%E7%AF%87%EF%BC%88Creation%EF%BC%89"><span class="toc-text">一、生命诞生篇（Creation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-beforeCreate"><span class="toc-text">1. beforeCreate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-created"><span class="toc-text">2. created</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%88%90%E9%95%BF%E8%A7%89%E9%86%92%E7%AF%87%EF%BC%88Mounting%EF%BC%89"><span class="toc-text">二、成长觉醒篇（Mounting）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-beforeMount"><span class="toc-text">3. beforeMount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-mounted"><span class="toc-text">4. mounted</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%80%82%E5%BA%94%E8%BF%9B%E5%8C%96%E7%AF%87%EF%BC%88Updating%EF%BC%89"><span class="toc-text">三、适应进化篇（Updating）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-beforeUpdate"><span class="toc-text">5. beforeUpdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-updated"><span class="toc-text">6. updated</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%94%9F%E5%91%BD%E8%BD%AE%E5%9B%9E%E7%AF%87%EF%BC%88Destruction%EF%BC%89"><span class="toc-text">四、生命轮回篇（Destruction）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-beforeDestroy"><span class="toc-text">7. beforeDestroy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-destroyed"><span class="toc-text">8. destroyed</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%89%B9%E6%AE%8A%E7%94%9F%E5%91%BD%E5%BD%A2%E6%80%81"><span class="toc-text">五、特殊生命形态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-activated-deactivated"><span class="toc-text">9. activated&#x2F;deactivated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-errorCaptured%EF%BC%88%E7%94%9F%E5%91%BD%E6%95%91%E6%8A%A4%EF%BC%89"><span class="toc-text">10. errorCaptured（生命救护）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">生命周期整体流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeCreate-created"><span class="toc-text">beforeCreate -&gt; created</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#created-beforeMount"><span class="toc-text">created -&gt; beforeMount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeMount"><span class="toc-text">beforeMount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeMount-mounted"><span class="toc-text">beforeMount -&gt; mounted</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mounted"><span class="toc-text">mounted</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeUpdate"><span class="toc-text">beforeUpdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updated"><span class="toc-text">updated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeDestroy"><span class="toc-text">beforeDestroy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#destroyed"><span class="toc-text">destroyed</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%83%E6%B3%95"><span class="toc-text">六、开发者心法</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -844,6 +805,27 @@
       <!-- hash算法 -->
       
       <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/09/16/12/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-16</span>
+                
+              </div>
+              <a class="post-title" href="/2024/09/16/12/">【Vue】vue的生命周期之成长篇beforeMount与mounted</a>
+            </div>
+          </div>
         
           <div class="aside-list-item">
             
@@ -926,27 +908,6 @@
                 
               </div>
               <a class="post-title" href="/2024/09/03/8/">【Docker】Docker容器相关命令</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/08/30/7/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">08-30</span>
-                
-              </div>
-              <a class="post-title" href="/2024/08/30/7/">【NVM】NVM安装与配置</a>
             </div>
           </div>
         
