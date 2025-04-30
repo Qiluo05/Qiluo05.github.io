@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>【Vue】Vue前端开发中路由的基本知识及用法 | Aluo</title>
+  <title>【Vue】Vue生命周期之适应篇beforeUpdate 与 updated | Aluo</title>
 
   <link rel="icon" type="image/jpeg" href="/medias/logo1.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -377,14 +377,14 @@
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        【Vue】Vue前端开发中路由的基本知识及用法
+        【Vue】Vue生命周期之适应篇beforeUpdate 与 updated
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-07-23 |
+          <i class="fas fa-calendar"></i> Published in：2024-10-23 |
         </span>
       
 
@@ -408,75 +408,112 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="【Vue】Vue前端开发中路由的基本知识及用法"><a href="#【Vue】Vue前端开发中路由的基本知识及用法" class="headerlink" title="【Vue】Vue前端开发中路由的基本知识及用法"></a>【Vue】Vue前端开发中路由的基本知识及用法</h1><h2 id="一、Vue-Router-简介"><a href="#一、Vue-Router-简介" class="headerlink" title="一、Vue Router 简介"></a>一、Vue Router 简介</h2><p>Vue Router 是 Vue.js 官方的路由管理器，它与 Vue.js 核心深度集成，使得构建单页面应用变得轻而易举。Vue Router 允许我们定义路由映射关系，并在用户访问不同 URL 时渲染不同的组件。</p>
-<h3 id="1-1-安装-Vue-Router"><a href="#1-1-安装-Vue-Router" class="headerlink" title="1.1 安装 Vue Router"></a>1.1 安装 Vue Router</h3><p>在使用 Vue Router 之前，我们需要先安装它。可以通过 npm 或 yarn 来安装 Vue Router：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router</span><br></pre></td></tr></table></figure>
+        <h1 id="【Vue】Vue生命周期之适应篇beforeUpdate-与-updated"><a href="#【Vue】Vue生命周期之适应篇beforeUpdate-与-updated" class="headerlink" title="【Vue】Vue生命周期之适应篇beforeUpdate 与 updated"></a>【Vue】Vue生命周期之适应篇beforeUpdate 与 updated</h1><p>在 Vue.js 中，beforeUpdate 和 updated 是组件生命周期中与数据更新相关的两个重要钩子函数。它们的核心区别在于 DOM 的更新状态 和 数据的变更时机。这两个钩子函数主要帮助我们在组件数据更新时，更好地处理 DOM 操作和逻辑优化。</p>
+<h2 id="一、-触发时机与数据状态"><a href="#一、-触发时机与数据状态" class="headerlink" title="一、 触发时机与数据状态"></a>一、 触发时机与数据状态</h2><table>
+<thead>
+<tr>
+<th><strong>钩子函数</strong></th>
+<th><strong>触发时机</strong></th>
+<th><strong>初始化状态</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>beforeUpdate</strong></td>
+<td>在组件数据更新后、DOM 更新之前触发，虚拟 DOM 已更新，但真实 DOM 未更新。</td>
+<td>- 数据已更新<br>- 虚拟 DOM 已重新渲染<br>- 真实 DOM 仍为旧状态<br>- 可以访问新数据，但无法操作新 DOM</td>
+</tr>
+<tr>
+<td><strong>updated</strong></td>
+<td>在组件数据更新后、真实 DOM 更新完成时触发，真实 DOM 已更新完成</td>
+<td>- 数据已更新<br>- 真实 DOM 已更新完成<br>- 可以操作 $el，访问和修改 DOM 元素<br>- 可以更新依赖 DOM 的第三方库</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="二、功能与使用场景"><a href="#二、功能与使用场景" class="headerlink" title="二、功能与使用场景"></a>二、功能与使用场景</h2><h3 id="1-beforeUpdate"><a href="#1-beforeUpdate" class="headerlink" title="1. beforeUpdate"></a>1. <code>beforeUpdate</code></h3><ul>
+<li><p><strong>用途</strong>:</p>
+<ul>
+<li>在DOM更新之前，对数据进行最后的检查或优化。</li>
+<li>预处理数据，避免不必要的DOM操作</li>
+<li>可以在此阶段进行性能优化，例如避免重复计算。</li>
+</ul>
+</li>
+<li><p><strong>限制</strong>：</p>
+<ul>
+<li>无法直接操作真实DOM：  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">beforeUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">$el</span>); <span class="comment">// 真实 DOM 还是旧状态，无法操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-updated"><a href="#2-updated" class="headerlink" title="2. updated"></a>2. <code>updated</code></h3><ul>
+<li><strong>用途</strong>：<ul>
+<li>在DOM更新完成后，进行依赖于DOM的操作。</li>
+<li>更新第三方库（如ECharts、Swiper）的实例。</li>
+<li>绑定或更新事件监听器。</li>
+<li>执行与DOM布局相关的操作（如滚动位置、动画效果）。</li>
+</ul>
+</li>
+<li><strong>特点</strong>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">updated</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">$el</span>); <span class="comment">// 真实 DOM 已更新</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">$el</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handleClick</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="三、-生命周期流程"><a href="#三、-生命周期流程" class="headerlink" title="三、 生命周期流程"></a>三、 生命周期流程</h2><ol>
+<li><p>数据更新触发</p>
+<p>↓</p>
+</li>
+<li><p>触发beforeUpdate钩子</p>
+<p>↓</p>
+</li>
+<li><p>虚拟DOM更新</p>
+<p>↓</p>
+</li>
+<li><p>真实DOM更新</p>
+<p>↓</p>
+</li>
+<li><p>触发updated钩子</p>
+<p>↓</p>
+</li>
+<li><p>组件进入运行状态</p>
+</li>
+</ol>
+<h2 id="四、-关键区别总结"><a href="#四、-关键区别总结" class="headerlink" title="四、 关键区别总结"></a>四、 关键区别总结</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>beforeUpdate</th>
+<th>updated</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DOM 操作</strong></td>
+<td>❌ 真实 DOM 未更新，无法操作</td>
+<td>✅ 真实 DOM 已更新，可操作 $el</td>
+</tr>
+<tr>
+<td><strong>数据状态</strong></td>
+<td>✅ 数据已更新，虚拟 DOM 已更新</td>
+<td>✅ 数据已更新，真实 DOM 已更新</td>
+</tr>
+<tr>
+<td><strong>第三方库更新</strong></td>
+<td>❌ 不适合（无法操作真实 DOM）</td>
+<td>✅ 推荐（可操作真实 DOM）</td>
+</tr>
+<tr>
+<td><strong>事件绑定</strong></td>
+<td>❌ 不推荐（真实 DOM 未更新）</td>
+<td>✅ 推荐（可绑定事件监听器）</td>
+</tr>
+<tr>
+<td><strong>使用频率</strong></td>
+<td>低频（特殊场景）</td>
+<td>高频（初始化第三方库、绑定事件监听器）</td>
+</tr>
+</tbody></table>
+<h2 id="五、-示例代码"><a href="#五、-示例代码" class="headerlink" title="五、 示例代码"></a>五、 示例代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&quot;Hello Vue!&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">updateMessage</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">message</span> = <span class="string">&quot;Updated Message!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">beforeUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;beforeUpdate:&quot;</span>, <span class="variable language_">this</span>.<span class="property">$el</span>); <span class="comment">// 真实 DOM 还是旧状态</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">updated</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;updated:&quot;</span>, <span class="variable language_">this</span>.<span class="property">$el</span>);     <span class="comment">// 真实 DOM 已更新</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$el</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">message</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>或者：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add vue-router</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-配置-Vue-Router"><a href="#1-2-配置-Vue-Router" class="headerlink" title="1.2 配置 Vue Router"></a>1.2 配置 Vue Router</h3><p>安装完成后，我们需要在 Vue 项目中配置 Vue Router。通常，我们会创建一个 router 目录，并在其中创建一个 index.js 文件来配置路由。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// src/router/index.js</span><br><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line">import VueRouter from <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line">import Home from <span class="string">&#x27;../views/Home.vue&#x27;</span>;</span><br><span class="line">import About from <span class="string">&#x27;../views/About.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line"></span><br><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    component: About</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default router;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们首先引入了 Vue 和 VueRouter，然后通过 Vue.use(VueRouter) 来安装 Vue Router。接着，我们定义了一个路由数组 routes，其中每个路由对象都包含 path、name 和 component 属性。最后，我们创建了一个 VueRouter 实例，并将其导出。</p>
-<h3 id="1-3-在-Vue-实例中使用-Vue-Router"><a href="#1-3-在-Vue-实例中使用-Vue-Router" class="headerlink" title="1.3 在 Vue 实例中使用 Vue Router"></a>1.3 在 Vue 实例中使用 Vue Router</h3><p>配置好路由后，我们需要在 Vue 实例中使用它。通常，我们会在 main.js 文件中引入并使用路由。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// src/main.js</span><br><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line">import App from <span class="string">&#x27;./App.vue&#x27;</span>;</span><br><span class="line">import router from <span class="string">&#x27;./router&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;).<span class="variable">$mount</span>(<span class="string">&#x27;#app&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们将 router 实例注入到 Vue 实例中，这样整个应用就可以使用 Vue Router 了。</p>
-<h2 id="二、-路由的基本用法"><a href="#二、-路由的基本用法" class="headerlink" title="二、 路由的基本用法"></a>二、 路由的基本用法</h2><h3 id="2-1-路由映射"><a href="#2-1-路由映射" class="headerlink" title="2.1 路由映射"></a>2.1 路由映射</h3><p>在 Vue Router 中，路由映射是通过 routes 数组来定义的。每个路由对象都包含以下属性：<br>path：表示路由的路径，可以是静态路径或动态路径。<br>name：表示路由的名称，可以通过名称来引用路由。<br>component：表示路由对应的组件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    component: About</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-路由视图"><a href="#2-2-路由视图" class="headerlink" title="2.2 路由视图"></a>2.2 路由视图</h3><p>在 Vue Router 中，路由视图是通过 <router-view> 组件来渲染的。<router-view> 是一个占位符，用于显示与当前路由匹配的组件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/App.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="built_in">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，<router-view> 会根据当前路由动态渲染对应的组件。</p>
-<h3 id="2-3-路由链接"><a href="#2-3-路由链接" class="headerlink" title="2.3 路由链接"></a>2.3 路由链接</h3><p>在 Vue Router 中，路由链接是通过 <router-link> 组件来创建的。<router-link> 是一个导航链接，用于在不同的路由之间切换。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/App.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="built_in">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line">    &lt;nav&gt;</span><br><span class="line">      &lt;router-link to=<span class="string">&quot;/&quot;</span>&gt;Home&lt;/router-link&gt;</span><br><span class="line">      &lt;router-link to=<span class="string">&quot;/about&quot;</span>&gt;About&lt;/router-link&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，<router-link> 会根据 to 属性生成相应的链接，并在用户点击时导航到对应的路由。</p>
-<h2 id="三、-动态路由"><a href="#三、-动态路由" class="headerlink" title="三、 动态路由"></a>三、 动态路由</h2><p>在实际开发中，我们经常需要根据不同的参数来动态渲染组件。Vue Router 提供了动态路由的功能，允许我们在路由路径中使用动态参数。</p>
-<h3 id="3-1-动态路径参数"><a href="#3-1-动态路径参数" class="headerlink" title="3.1 动态路径参数"></a>3.1 动态路径参数</h3><p>在路由路径中，我们可以使用 : 来定义动态参数。例如，我们可以定义一个包含用户 ID 的动态路由：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;User&#x27;</span>,</span><br><span class="line">    component: User</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，:id 是一个动态参数，它可以匹配任何值。例如，&#x2F;user&#x2F;1 和 &#x2F;user&#x2F;2 都会匹配到这个路由。</p>
-<h3 id="3-2-访问动态参数"><a href="#3-2-访问动态参数" class="headerlink" title="3.2 访问动态参数"></a>3.2 访问动态参数</h3><p>在组件中，我们可以通过 this.$route.params 来访问动态参数。例如，在 User 组件中，我们可以通过 this.$route.params.id 来获取用户 ID。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/views/User.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;User ID: &#123;&#123; userId &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="function"><span class="title">userId</span></span>() &#123;</span><br><span class="line">      <span class="built_in">return</span> this.<span class="variable">$route</span>.params.id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-3-响应路由参数的变化"><a href="#3-3-响应路由参数的变化" class="headerlink" title="3.3 响应路由参数的变化"></a>3.3 响应路由参数的变化</h3><p>当路由参数发生变化时，Vue Router 会复用同一个组件实例，而不是销毁并重新创建。这意味着，组件的生命周期钩子（如 mounted）不会再次触发。为了响应路由参数的变化，我们可以使用 watch 来监听 $route 对象的变化。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/views/User.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;User ID: &#123;&#123; userId &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="function"><span class="title">userId</span></span>() &#123;</span><br><span class="line">      <span class="built_in">return</span> this.<span class="variable">$route</span>.params.id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    <span class="string">&#x27;$route.params.id&#x27;</span>(newId, oldId) &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;User ID changed from&#x27;</span>, oldId, <span class="string">&#x27;to&#x27;</span>, newId);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们通过 watch 监听 $route.params.id 的变化，并在控制台中输出变化信息。</p>
-<h2 id="四、-嵌套路由"><a href="#四、-嵌套路由" class="headerlink" title="四、 嵌套路由"></a>四、 嵌套路由</h2><p>在实际开发中，我们经常需要在一个组件中嵌套其他组件。Vue Router 提供了嵌套路由的功能，允许我们在一个路由中定义子路由。</p>
-<h3 id="4-1-定义嵌套路由"><a href="#4-1-定义嵌套路由" class="headerlink" title="4.1 定义嵌套路由"></a>4.1 定义嵌套路由</h3><p>在路由配置中，我们可以通过 children 属性来定义嵌套路由。例如，我们可以在 User 组件中定义两个子路由：Profile 和 Posts。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">    component: User,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">&#x27;profile&#x27;</span>,</span><br><span class="line">        component: Profile</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">&#x27;posts&#x27;</span>,</span><br><span class="line">        component: Posts</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，User 组件是父路由，Profile 和 Posts 是子路由。当用户访问 &#x2F;user&#x2F;1&#x2F;profile 时，User 组件会渲染 Profile 组件；当用户访问 &#x2F;user&#x2F;1&#x2F;posts 时，User 组件会渲染 Posts 组件。</p>
-<h3 id="4-2-渲染嵌套路由"><a href="#4-2-渲染嵌套路由" class="headerlink" title="4.2 渲染嵌套路由"></a>4.2 渲染嵌套路由</h3><p>在父组件中，我们可以通过 <router-view> 来渲染子路由。例如，在 User 组件中，我们可以使用 <router-view> 来渲染 Profile 或 Posts 组件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/views/User.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;User ID: &#123;&#123; userId &#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="function"><span class="title">userId</span></span>() &#123;</span><br><span class="line">      <span class="built_in">return</span> this.<span class="variable">$route</span>.params.id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，<router-view> 会根据当前子路由动态渲染 Profile 或 Posts 组件。</p>
-<h2 id="五、-路由守卫"><a href="#五、-路由守卫" class="headerlink" title="五、 路由守卫"></a>五、 路由守卫</h2><p>路由守卫是 Vue Router 提供的一种机制，允许我们在路由导航过程中执行一些操作，例如权限验证、数据预取等。Vue Router 提供了三种路由守卫：全局守卫、路由独享守卫和组件内守卫。</p>
-<h3 id="5-1-全局守卫"><a href="#5-1-全局守卫" class="headerlink" title="5.1 全局守卫"></a>5.1 全局守卫</h3><p>全局守卫是在路由导航过程中全局生效的守卫。Vue Router 提供了三种全局守卫：beforeEach、beforeResolve 和 afterEach。<br>beforeEach：在路由导航之前执行，常用于权限验证。<br>beforeResolve：在路由导航确认之前执行，常用于数据预取。<br>afterEach：在路由导航完成之后执行，常用于日志记录。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// src/router/index.js</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.beforeEach((to, from, next) =&gt; &#123;</span><br><span class="line">  console.log(&#x27;Global beforeEach guard&#x27;);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.beforeResolve((to, from, next) =&gt; &#123;</span><br><span class="line">  console.log(&#x27;Global beforeResolve guard&#x27;);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.afterEach((to, from) =&gt; &#123;</span><br><span class="line">  console.log(&#x27;Global afterEach guard&#x27;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default router;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们定义了三个全局守卫，并在控制台中输出相应的日志信息。</p>
-<h3 id="5-2-路由独享守卫"><a href="#5-2-路由独享守卫" class="headerlink" title="5.2 路由独享守卫"></a>5.2 路由独享守卫</h3><p>路由独享守卫是在某个特定路由上生效的守卫。我们可以在路由配置中通过 beforeEnter 属性来定义路由独享守卫。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/user/:id&#x27;</span>,</span><br><span class="line">    component: User,</span><br><span class="line">    beforeEnter: (to, from, next) =&gt; &#123;</span><br><span class="line">      console.log(<span class="string">&#x27;Route-specific beforeEnter guard&#x27;</span>);</span><br><span class="line">      next();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们为 &#x2F;user&#x2F;:id 路由定义了一个 beforeEnter 守卫，并在控制台中输出日志信息。</p>
-<h3 id="5-3-组件内守卫"><a href="#5-3-组件内守卫" class="headerlink" title="5.3 组件内守卫"></a>5.3 组件内守卫</h3><p>组件内守卫是在组件内部定义的守卫。Vue Router 提供了三种组件内守卫：beforeRouteEnter、beforeRouteUpdate 和 beforeRouteLeave。<br>beforeRouteEnter：在路由进入组件之前执行，常用于权限验证。<br>beforeRouteUpdate：在路由更新时执行，常用于响应路由参数的变化。<br>beforeRouteLeave：在路由离开组件之前执行，常用于提示用户保存未保存的数据。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/views/User.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;User ID: &#123;&#123; userId &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    <span class="function"><span class="title">userId</span></span>() &#123;</span><br><span class="line">      <span class="built_in">return</span> this.<span class="variable">$route</span>.params.id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteEnter(to, from, next) &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;Component beforeRouteEnter guard&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteUpdate(to, from, next) &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;Component beforeRouteUpdate guard&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteLeave(to, from, next) &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;Component beforeRouteLeave guard&#x27;</span>);</span><br><span class="line">    next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们定义了三个组件内守卫，并在控制台中输出相应的日志信息。</p>
-<h2 id="六、-路由懒加载"><a href="#六、-路由懒加载" class="headerlink" title="六、 路由懒加载"></a>六、 路由懒加载</h2><p>随着应用的规模增大，打包后的 JavaScript 文件也会变得越来越大，这会导致应用的初始加载时间变长。为了优化应用的性能，Vue Router 提供了路由懒加载的功能，允许我们将路由对应的组件按需加载。</p>
-<h3 id="6-1-使用动态导入实现懒加载"><a href="#6-1-使用动态导入实现懒加载" class="headerlink" title="6.1 使用动态导入实现懒加载"></a>6.1 使用动态导入实现懒加载</h3><p>在 Vue Router 中，我们可以使用动态导入（import()）来实现路由懒加载。动态导入会返回一个 Promise，Vue Router 会在需要时加载对应的组件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: () =&gt; import(<span class="string">&#x27;../views/Home.vue&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    component: () =&gt; import(<span class="string">&#x27;../views/About.vue&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们使用动态导入来懒加载 Home 和 About 组件。这样，只有在用户访问 &#x2F; 或 &#x2F;about 时，才会加载对应的组件。</p>
-<h3 id="6-2-使用-Webpack-的魔法注释"><a href="#6-2-使用-Webpack-的魔法注释" class="headerlink" title="6.2 使用 Webpack 的魔法注释"></a>6.2 使用 Webpack 的魔法注释</h3><p>在使用动态导入时，我们可以使用 Webpack 的魔法注释来为生成的 chunk 命名。这样，我们可以更好地管理和调试生成的代码。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: () =&gt; import(/* webpackChunkName: <span class="string">&quot;home&quot;</span> */ <span class="string">&#x27;../views/Home.vue&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    component: () =&gt; import(/* webpackChunkName: <span class="string">&quot;about&quot;</span> */ <span class="string">&#x27;../views/About.vue&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们使用 webpackChunkName 魔法注释为 Home 和 About 组件生成的 chunk 命名。这样，生成的 chunk 文件会被命名为 home.js 和 about.js。</p>
+<h2 id="六、-使用建议"><a href="#六、-使用建议" class="headerlink" title="六、 使用建议"></a>六、 使用建议</h2><ul>
+<li>优先使用 updated：绝大多数依赖 DOM 的更新逻辑应放在此处。</li>
+<li>谨慎使用 beforeUpdate：仅用于需要在真实 DOM 更新前进行数据检查或优化的场景。</li>
+<li>注意循环更新问题：在 updated 中避免直接修改数据，否则可能会触发新的更新，导致无限循环。</li>
+<li>使用 $nextTick：如果需要在 DOM 更新完成后立即操作 DOM，可以使用 this.$nextTick 确保 DOM 已更新完成。</li>
+</ul>
 
       </div>
       <div class="post-tags-categories">
@@ -490,7 +527,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/07/23/4/" target="_blank" title="【Vue】Vue前端开发中路由的基本知识及用法">http://example.com/2024/07/23/4/</a>
+    <a href="/2024/10/23/14/" target="_blank" title="【Vue】Vue生命周期之适应篇beforeUpdate 与 updated">http://example.com/2024/10/23/14/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -512,18 +549,16 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2024/08/06/5/" class="post-nav-link">
+    <a href="/2024/10/25/15/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">【hexo】解决hexo页面地址机器码</div>
+        <div class="title-text">【Vue】Vue的生命周期之死亡篇beforeDestroy与destroyed</div>
       </div>
       
       <!-- <div class="content">
-        【hexo】解决hexo页面地址机器码最近发现想把写的文章发给朋友明明在网页上复制的时候是这样的
-
-结果发给朋友是这样的
+        【Vue】Vue的生命周期之死亡篇beforeDestroy与destroyed在 Vue.js 中，beforeDes
       </div> -->
     </a>
   </div>
@@ -534,15 +569,15 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2024/05/26/3/" class="post-nav-link">
+    <a href="/2024/10/20/13/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">【Mysql】简单的增删改查命令</div>
+        <div class="title-text">【Vue】vue的生命周期之成长篇beforeMount与mounted</div>
       </div>
       <!-- <div class="content">
-        【Mysql】简单的增删改查命令创建数据库1234create database“数据库名字”# 例：create da
+        【Vue】vue的生命周期之成长篇beforeMount与mounted在 Vue.js 中，beforeMount 和
       </div> -->
     </a>
   </div>
@@ -764,7 +799,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Vue%E3%80%91Vue%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%8F%8A%E7%94%A8%E6%B3%95"><span class="toc-text">【Vue】Vue前端开发中路由的基本知识及用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Vue-Router-%E7%AE%80%E4%BB%8B"><span class="toc-text">一、Vue Router 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%AE%89%E8%A3%85-Vue-Router"><span class="toc-text">1.1 安装 Vue Router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%85%8D%E7%BD%AE-Vue-Router"><span class="toc-text">1.2 配置 Vue Router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%9C%A8-Vue-%E5%AE%9E%E4%BE%8B%E4%B8%AD%E4%BD%BF%E7%94%A8-Vue-Router"><span class="toc-text">1.3 在 Vue 实例中使用 Vue Router</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">二、 路由的基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%B7%AF%E7%94%B1%E6%98%A0%E5%B0%84"><span class="toc-text">2.1 路由映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%B7%AF%E7%94%B1%E8%A7%86%E5%9B%BE"><span class="toc-text">2.2 路由视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%B7%AF%E7%94%B1%E9%93%BE%E6%8E%A5"><span class="toc-text">2.3 路由链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-text">三、 动态路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%8A%A8%E6%80%81%E8%B7%AF%E5%BE%84%E5%8F%82%E6%95%B0"><span class="toc-text">3.1 动态路径参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%AE%BF%E9%97%AE%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0"><span class="toc-text">3.2 访问动态参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%93%8D%E5%BA%94%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-text">3.3 响应路由参数的变化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="toc-text">四、 嵌套路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%AE%9A%E4%B9%89%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="toc-text">4.1 定义嵌套路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%B8%B2%E6%9F%93%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="toc-text">4.2 渲染嵌套路由</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81-%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="toc-text">五、 路由守卫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%85%A8%E5%B1%80%E5%AE%88%E5%8D%AB"><span class="toc-text">5.1 全局守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E5%AE%88%E5%8D%AB"><span class="toc-text">5.2 路由独享守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E7%BB%84%E4%BB%B6%E5%86%85%E5%AE%88%E5%8D%AB"><span class="toc-text">5.3 组件内守卫</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81-%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">六、 路由懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E4%BD%BF%E7%94%A8%E5%8A%A8%E6%80%81%E5%AF%BC%E5%85%A5%E5%AE%9E%E7%8E%B0%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">6.1 使用动态导入实现懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E4%BD%BF%E7%94%A8-Webpack-%E7%9A%84%E9%AD%94%E6%B3%95%E6%B3%A8%E9%87%8A"><span class="toc-text">6.2 使用 Webpack 的魔法注释</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Vue%E3%80%91Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B9%8B%E9%80%82%E5%BA%94%E7%AF%87beforeUpdate-%E4%B8%8E-updated"><span class="toc-text">【Vue】Vue生命周期之适应篇beforeUpdate 与 updated</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%8A%B6%E6%80%81"><span class="toc-text">一、 触发时机与数据状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">二、功能与使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-beforeUpdate"><span class="toc-text">1. beforeUpdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-updated"><span class="toc-text">2. updated</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B5%81%E7%A8%8B"><span class="toc-text">三、 生命周期流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E5%85%B3%E9%94%AE%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93"><span class="toc-text">四、 关键区别总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81-%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">五、 示例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81-%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="toc-text">六、 使用建议</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

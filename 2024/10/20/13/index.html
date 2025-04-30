@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>【Vue】vue的生命周期之出生篇beforeCreate与created | Aluo</title>
+  <title>【Vue】vue的生命周期之成长篇beforeMount与mounted | Aluo</title>
 
   <link rel="icon" type="image/jpeg" href="/medias/logo1.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -370,21 +370,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        【Vue】vue的生命周期之出生篇beforeCreate与created
+        【Vue】vue的生命周期之成长篇beforeMount与mounted
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-09-16 |
+          <i class="fas fa-calendar"></i> Published in：2024-10-20 |
         </span>
       
 
@@ -408,11 +408,7 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="【Vue】vue的生命周期之出生篇beforeCreate与created"><a href="#【Vue】vue的生命周期之出生篇beforeCreate与created" class="headerlink" title="【Vue】vue的生命周期之出生篇beforeCreate与created"></a>【Vue】vue的生命周期之出生篇beforeCreate与created</h1><p>在 Vue.js 中，<code>beforeCreate</code> 和 <code>created</code> 是组件生命周期中最早触发的两个钩子函数。它们的核心区别在于 <strong>组件初始化阶段的完成程度</strong> 和 <strong>可访问的实例属性&#x2F;方法</strong>。</p>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在创建完这个Vue实例之后，首先会进入一个初始化阶段，此阶段初始化生命周期和事件，但是在此阶段，数据代理还并没有开始。在初始化阶段之后，就会经历vue的 beforeCreate 阶段，由于数据代理并未初始化，因此这个阶段是拿不到vm对象以及_data数据的，因此在第一个 beforeCreate 阶段中，无法通过这个vm对象访到data中的数据和methods中方法。</p>
-<p>在beforeCreate之后，还是处于一个初始化阶段，即init Injections &amp; reactivity 阶段。该阶段就是初始化这个数据监测和数据代理的，这样就可以获取到代理对象，解析模板了。</p>
-<p>在beforeCreate之后，还是处于一个初始化阶段，即init Injections &amp; reactivity 阶段。该阶段就是初始化这个数据监测和数据代理的，这样就可以获取到代理对象，解析模板了。此时是可以通过vm对象获取到 data 中的属性和method 中的方法的。</p>
-<hr>
+        <h1 id="【Vue】vue的生命周期之成长篇beforeMount与mounted"><a href="#【Vue】vue的生命周期之成长篇beforeMount与mounted" class="headerlink" title="【Vue】vue的生命周期之成长篇beforeMount与mounted"></a>【Vue】vue的生命周期之成长篇beforeMount与mounted</h1><p>在 Vue.js 中，<code>beforeMount</code> 和 <code>mounted</code> 是组件生命周期中与 DOM 挂载相关的两个重要钩子函数。它们的核心区别在于 <strong>DOM 的挂载状态</strong> 和 <strong>模板的编译状态</strong>。</p>
 <h2 id="一、触发时机与初始化状态"><a href="#一、触发时机与初始化状态" class="headerlink" title="一、触发时机与初始化状态"></a>一、触发时机与初始化状态</h2><table>
 <thead>
 <tr>
@@ -422,90 +418,98 @@
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>beforeCreate</strong></td>
-<td>在组件实例刚被创建时触发，<strong>数据观测（<code>data</code>）和事件&#x2F;侦听器配置之前</strong>。</td>
-<td>- 实例的 <code>data</code>、<code>methods</code>、<code>computed</code> 等选项尚未初始化<br>- 无法访问组件的数据和方法</td>
+<td><strong>beforeMount</strong></td>
+<td>在组件挂载到 DOM 之前触发，<strong>虚拟 DOM 已编译完成，但真实 DOM 未挂载</strong>。</td>
+<td>- 虚拟 DOM 已编译完成<br>- 真实 DOM 仍为占位符状态（如 <code>&#123;&#123;data&#125;&#125;</code>）<br>- 可以访问 <code>data</code> 和 <code>methods</code>，但无法操作真实 DOM</td>
 </tr>
 <tr>
-<td><strong>created</strong></td>
-<td>在组件实例创建完成后触发，<strong>数据观测、计算属性、方法、事件&#x2F;侦听器已配置完成</strong>。</td>
-<td>- 数据观测已完成（<code>data</code> 属性变为响应式）<br>- 可以访问 <code>data</code>、<code>methods</code> 等，但尚未挂载 DOM（<code>$el</code> 未生成）</td>
+<td><strong>mounted</strong></td>
+<td>在组件挂载到 DOM 之后触发，<strong>真实 DOM 已挂载完成</strong>。</td>
+<td>- 真实 DOM 已挂载完成<br>- 可以操作 <code>$el</code>，访问和修改 DOM 元素<br>- 可以初始化依赖 DOM 的第三方库</td>
 </tr>
 </tbody></table>
 <hr>
-<h2 id="二、功能与使用场景"><a href="#二、功能与使用场景" class="headerlink" title="二、功能与使用场景"></a>二、功能与使用场景</h2><h3 id="1-beforeCreate"><a href="#1-beforeCreate" class="headerlink" title="1. beforeCreate"></a>1. <code>beforeCreate</code></h3><ul>
-<li><strong>用途</strong>：<ul>
-<li>执行与组件数据无关的初始化逻辑（如全局事件总线注册）。</li>
-<li>插件注入的非响应式配置。</li>
+<h2 id="二、功能与使用场景"><a href="#二、功能与使用场景" class="headerlink" title="二、功能与使用场景"></a>二、功能与使用场景</h2><h3 id="1-beforeMount"><a href="#1-beforeMount" class="headerlink" title="1. beforeMount"></a>1. <code>beforeMount</code></h3><ul>
+<li><p><strong>用途</strong>：</p>
+<ul>
+<li>修改模板逻辑或数据，但不会影响真实 DOM。</li>
+<li>预处理数据或进行模板预加载。</li>
 </ul>
 </li>
-<li><strong>限制</strong>：<ul>
-<li>无法访问 <code>data</code> 和 <code>methods</code>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">beforeCreate</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">message</span>); <span class="comment">// undefined（data 未初始化）</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">showMessage</span>();        <span class="comment">// 报错（methods 未绑定）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>限制</strong>：</p>
+<ul>
+<li>无法直接操作真实 DOM：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">beforeMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">$el</span>); <span class="comment">// 还是占位符状态，无法操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
-<h3 id="2-created"><a href="#2-created" class="headerlink" title="2. created"></a>2. <code>created</code></h3><ul>
-<li><strong>用途</strong>：<ul>
-<li>发起异步请求（API 调用）。</li>
-<li>操作响应式数据（修改 <code>data</code> 属性）。</li>
+<h3 id="2-mounted"><a href="#2-mounted" class="headerlink" title="2. mounted"></a>2. <code>mounted</code></h3><ul>
+<li><p><strong>用途</strong>：</p>
+<ul>
+<li>初始化第三方库（如 ECharts、Swiper）。</li>
+<li>绑定事件监听器（如 <code>addEventListener</code>）。</li>
+<li>执行依赖 DOM 的操作（如计算布局、滚动位置）。</li>
 </ul>
 </li>
-<li><strong>特点</strong>：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">created</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">message</span>); <span class="comment">// &quot;Hello&quot;（data 已初始化）</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">showMessage</span>();        <span class="comment">// 正常执行（methods 已绑定）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>特点</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">$el</span>); <span class="comment">// 真实 DOM 已挂载</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">$el</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handleClick</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="三、生命周期流程"><a href="#三、生命周期流程" class="headerlink" title="三、生命周期流程"></a>三、生命周期流程</h2><ol>
 <li><p>初始化组件实例</p>
 <p>↓</p>
 </li>
-<li><p>初始化事件和生命周期（此时 <code>beforeCreate</code> 触发）</p>
+<li><p>初始化事件和生命周期（beforeCreate）</p>
 <p>↓</p>
 </li>
-<li><p>初始化注入（<code>inject</code>）和响应式数据（<code>data</code>、<code>props</code>、<code>methods</code> 等）</p>
+<li><p>初始化注入和响应式数据（created）</p>
 <p>↓</p>
 </li>
-<li><p>调用 <code>created</code> 钩子（此时可访问数据和方法）</p>
+<li><p>编译模板（此时触发 beforeMount）</p>
 <p>↓</p>
 </li>
-<li><p>编译模板（如有）→ 挂载 DOM → 触发 <code>mounted</code></p>
+<li><p>挂载真实 DOM（此时触发 mounted）</p>
+<p>↓</p>
+</li>
+<li><p>组件进入运行状态</p>
 </li>
 </ol>
 <h2 id="四、关键区别总结"><a href="#四、关键区别总结" class="headerlink" title="四、关键区别总结"></a>四、关键区别总结</h2><table>
 <thead>
 <tr>
-<th><strong>特性</strong></th>
-<th><strong>beforeCreate</strong></th>
-<th><strong>created</strong></th>
+<th>特性</th>
+<th>beforeMount</th>
+<th>mounted</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>数据访问</strong></td>
-<td>❌ <code>data</code>、<code>methods</code> 未初始化</td>
-<td>✅ 可访问 <code>data</code>、<code>methods</code>、<code>computed</code></td>
-</tr>
-<tr>
-<td><strong>响应式系统</strong></td>
-<td>❌ 未建立</td>
-<td>✅ 已建立（数据修改会触发更新）</td>
-</tr>
-<tr>
-<td><strong>异步请求</strong></td>
-<td>❌ 不推荐（无法操作数据）</td>
-<td>✅ 推荐（可修改数据并触发渲染）</td>
-</tr>
-<tr>
 <td><strong>DOM 操作</strong></td>
-<td>❌ <code>$el</code> 未生成，无法操作 DOM</td>
-<td>❌ <code>$el</code> 仍未生成，但可通过 <code>nextTick</code> 等待挂载</td>
+<td>❌ 真实 DOM 未挂载，无法操作</td>
+<td>✅ 真实 DOM 已挂载，可操作 <code>$el</code></td>
+</tr>
+<tr>
+<td><strong>模板状态</strong></td>
+<td>✅ 虚拟 DOM 已编译完成</td>
+<td>✅ 真实 DOM 已替换虚拟 DOM</td>
+</tr>
+<tr>
+<td><strong>第三方库初始化</strong></td>
+<td>❌ 不适合（无法操作真实 DOM）</td>
+<td>✅ 推荐（可操作真实 DOM）</td>
+</tr>
+<tr>
+<td><strong>事件绑定</strong></td>
+<td>❌ 不推荐（真实 DOM 未挂载）</td>
+<td>✅ 推荐（可绑定事件监听器）</td>
 </tr>
 <tr>
 <td><strong>使用频率</strong></td>
 <td>低频（特殊场景）</td>
-<td>高频（数据初始化、API 调用）</td>
+<td>高频（初始化第三方库、绑定事件监听器）</td>
 </tr>
 </tbody></table>
-<h2 id="五、示例代码"><a href="#五、示例代码" class="headerlink" title="五、示例代码"></a>五、示例代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123; count: 0 &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">beforeCreate</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">&quot;beforeCreate:&quot;</span>, this.count); // undefined</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">created</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">&quot;created:&quot;</span>, this.count);      // 0</span><br><span class="line">    this.count = 1; // 响应式数据可修改</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">&quot;mounted:&quot;</span>, this.<span class="variable">$el</span>);        // 已挂载的 DOM 元素</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="六、使用建议"><a href="#六、使用建议" class="headerlink" title="六、使用建议"></a>六、使用建议</h2><p>-**优先使用 <code>created</code>**： 绝大多数数据初始化、API 调用逻辑应放在此处。</p>
-<p>-**谨慎使用 <code>beforeCreate</code>**： 仅用于完全不依赖组件数据的场景（如非响应式插件配置）。</p>
-<p>-<strong>避免副作用操作</strong>： 在 <code>beforeCreate</code> 中不要修改数据。</p>
+<h2 id="五、示例代码"><a href="#五、示例代码" class="headerlink" title="五、示例代码"></a>五、示例代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123; message: <span class="string">&quot;Hello Vue!&quot;</span> &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">beforeMount</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">&quot;beforeMount:&quot;</span>, this.<span class="variable">$el</span>); // 还是占位符状态</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">&quot;mounted:&quot;</span>, this.<span class="variable">$el</span>);     // 真实 DOM 已挂载</span><br><span class="line">    this.<span class="variable">$el</span>.addEventListener(<span class="string">&#x27;click&#x27;</span>, () =&gt; &#123;</span><br><span class="line">      alert(this.message);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="六、使用建议"><a href="#六、使用建议" class="headerlink" title="六、使用建议"></a>六、使用建议</h2><p>-**优先使用 <code>mounted</code>**： 绝大多数依赖 DOM 的初始化和操作逻辑应放在此处。</p>
+<p>-**谨慎使用 <code>beforeMount</code>**：仅用于需要在真实 DOM 挂载前修改模板逻辑的场景。</p>
+<p>-<strong>注意子组件挂载时机</strong>： 在 <code>mounted</code> 中操作子组件的 DOM 时，需确保子组件已挂载完成（可使用 this.$nextTick）。</p>
 
       </div>
       <div class="post-tags-categories">
@@ -519,7 +523,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/09/16/11/" target="_blank" title="【Vue】vue的生命周期之出生篇beforeCreate与created">http://example.com/2024/09/16/11/</a>
+    <a href="/2024/10/20/13/" target="_blank" title="【Vue】vue的生命周期之成长篇beforeMount与mounted">http://example.com/2024/10/20/13/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -541,16 +545,16 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2024/09/16/12/" class="post-nav-link">
+    <a href="/2024/10/23/14/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">【Vue】vue的生命周期之成长篇beforeMount与mounted</div>
+        <div class="title-text">【Vue】Vue生命周期之适应篇beforeUpdate 与 updated</div>
       </div>
       
       <!-- <div class="content">
-        【Vue】vue的生命周期之成长篇beforeMount与mounted在 Vue.js 中，beforeMount 和
+        【Vue】Vue生命周期之适应篇beforeUpdate 与 updated在 Vue.js 中，beforeUpdat
       </div> -->
     </a>
   </div>
@@ -561,15 +565,15 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2024/09/15/10/" class="post-nav-link">
+    <a href="/2024/10/16/12/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">【Vue】原来生命周期这么有生命感</div>
+        <div class="title-text">【Vue】vue的生命周期之出生篇beforeCreate与created</div>
       </div>
       <!-- <div class="content">
-        Vue 生命周期全解析：从生命诞生到轮回的组件史诗一、生命诞生篇（Creation）1. beforeCreate  如
+        【Vue】vue的生命周期之出生篇beforeCreate与created在 Vue.js 中，beforeCreate
       </div> -->
     </a>
   </div>
@@ -791,7 +795,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Vue%E3%80%91vue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B9%8B%E5%87%BA%E7%94%9F%E7%AF%87beforeCreate%E4%B8%8Ecreated"><span class="toc-text">【Vue】vue的生命周期之出生篇beforeCreate与created</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8A%B6%E6%80%81"><span class="toc-text">一、触发时机与初始化状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">二、功能与使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-beforeCreate"><span class="toc-text">1. beforeCreate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-created"><span class="toc-text">2. created</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B5%81%E7%A8%8B"><span class="toc-text">三、生命周期流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B3%E9%94%AE%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93"><span class="toc-text">四、关键区别总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">五、示例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="toc-text">六、使用建议</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Vue%E3%80%91vue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B9%8B%E6%88%90%E9%95%BF%E7%AF%87beforeMount%E4%B8%8Emounted"><span class="toc-text">【Vue】vue的生命周期之成长篇beforeMount与mounted</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8A%B6%E6%80%81"><span class="toc-text">一、触发时机与初始化状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">二、功能与使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-beforeMount"><span class="toc-text">1. beforeMount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-mounted"><span class="toc-text">2. mounted</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B5%81%E7%A8%8B"><span class="toc-text">三、生命周期流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B3%E9%94%AE%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93"><span class="toc-text">四、关键区别总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">五、示例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="toc-text">六、使用建议</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -824,7 +828,49 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/09/16/12/" class="post-img " style="background-size: cover; 
+              <a href="/2024/10/25/15/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-63bbdb5b76b8d349ad35ff4281efbd37_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-25</span>
+                
+              </div>
+              <a class="post-title" href="/2024/10/25/15/">【Vue】Vue的生命周期之死亡篇beforeDestroy与destroyed</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/10/23/14/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-23</span>
+                
+              </div>
+              <a class="post-title" href="/2024/10/23/14/">【Vue】Vue生命周期之适应篇beforeUpdate 与 updated</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/10/20/13/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -832,10 +878,10 @@
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">09-16</span>
+                  <span class="post-date">10-20</span>
                 
               </div>
-              <a class="post-title" href="/2024/09/16/12/">【Vue】vue的生命周期之成长篇beforeMount与mounted</a>
+              <a class="post-title" href="/2024/10/20/13/">【Vue】vue的生命周期之成长篇beforeMount与mounted</a>
             </div>
           </div>
         
@@ -845,7 +891,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/09/16/11/" class="post-img " style="background-size: cover; 
+              <a href="/2024/10/16/12/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -853,10 +899,10 @@
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">09-16</span>
+                  <span class="post-date">10-16</span>
                 
               </div>
-              <a class="post-title" href="/2024/09/16/11/">【Vue】vue的生命周期之出生篇beforeCreate与created</a>
+              <a class="post-title" href="/2024/10/16/12/">【Vue】vue的生命周期之出生篇beforeCreate与created</a>
             </div>
           </div>
         
@@ -866,7 +912,7 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/09/15/10/" class="post-img " style="background-size: cover; 
+              <a href="/2024/10/15/11/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
               </a>
@@ -874,52 +920,10 @@
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">09-15</span>
+                  <span class="post-date">10-15</span>
                 
               </div>
-              <a class="post-title" href="/2024/09/15/10/">【Vue】原来生命周期这么有生命感</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/09/09/9/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-7cfc909ebe8d83683909846edd6b5232_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">09-09</span>
-                
-              </div>
-              <a class="post-title" href="/2024/09/09/9/">【git】git 常用操作整理</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/09/03/8/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">09-03</span>
-                
-              </div>
-              <a class="post-title" href="/2024/09/03/8/">【Docker】Docker容器相关命令</a>
+              <a class="post-title" href="/2024/10/15/11/">【Vue】原来生命周期这么有生命感</a>
             </div>
           </div>
         
