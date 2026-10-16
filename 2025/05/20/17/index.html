@@ -408,7 +408,25 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="明天更新。。。尽情期待。。。"><a href="#明天更新。。。尽情期待。。。" class="headerlink" title="明天更新。。。尽情期待。。。"></a>明天更新。。。尽情期待。。。</h1>
+        <h1 id="将vite项目打包成apk包教程"><a href="#将vite项目打包成apk包教程" class="headerlink" title="将vite项目打包成apk包教程"></a>将vite项目打包成apk包教程</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm add @capacitor/core @capacitor/cli @capacitor/android</span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化-Capacitor"><a href="#初始化-Capacitor" class="headerlink" title="初始化 Capacitor"></a>初始化 Capacitor</h3><p>在项目根目录中运行，输入包名以及ID，外加两个 n。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx <span class="built_in">cap</span> init</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-capacitor-config-json："><a href="#配置-capacitor-config-json：" class="headerlink" title="配置  capacitor.config.json："></a>配置  capacitor.config.json：</h3><p>修改生成的 capacitor.config.json 文件，将 webDir 设置为您的构建目录</p>
+<p><img src="/../data/2025/capacitor%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" class="lazyload placeholder" data-srcset="/../data/2025/capacitor%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt=" "></p>
+<h2 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h2><h3 id="打包项目"><a href="#打包项目" class="headerlink" title="打包项目"></a>打包项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加-Android-平台"><a href="#添加-Android-平台" class="headerlink" title="添加 Android 平台"></a>添加 Android 平台</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx <span class="built_in">cap</span> add android</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制打包文件"><a href="#复制打包文件" class="headerlink" title="复制打包文件"></a>复制打包文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx <span class="built_in">cap</span> copy android</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx <span class="built_in">cap</span> <span class="built_in">sync</span> android</span><br></pre></td></tr></table></figure>
+
+<h3 id="打开-Android-Studio"><a href="#打开-Android-Studio" class="headerlink" title="打开 Android Studio"></a>打开 Android Studio</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx <span class="built_in">cap</span> open android</span><br></pre></td></tr></table></figure>
+
+<h3 id="在-Android-Studio-中构建-APK："><a href="#在-Android-Studio-中构建-APK：" class="headerlink" title="在 Android Studio 中构建 APK："></a>在 Android Studio 中构建 APK：</h3><p>在 Android Studio 中，您可以通过菜单选择 Build &gt; Build Bundle(s) &#x2F; APK(s) &gt; Build APK(s) 来生成 APK 文件。</p>
+
       </div>
       <div class="post-tags-categories">
         
@@ -694,7 +712,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%8E%E5%A4%A9%E6%9B%B4%E6%96%B0%E3%80%82%E3%80%82%E3%80%82%E5%B0%BD%E6%83%85%E6%9C%9F%E5%BE%85%E3%80%82%E3%80%82%E3%80%82"><span class="toc-text">明天更新。。。尽情期待。。。</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86vite%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%88%90apk%E5%8C%85%E6%95%99%E7%A8%8B"><span class="toc-text">将vite项目打包成apk包教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Capacitor"><span class="toc-text">初始化 Capacitor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-capacitor-config-json%EF%BC%9A"><span class="toc-text">配置  capacitor.config.json：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA"><span class="toc-text">构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E9%A1%B9%E7%9B%AE"><span class="toc-text">打包项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0-Android-%E5%B9%B3%E5%8F%B0"><span class="toc-text">添加 Android 平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6"><span class="toc-text">复制打包文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80-Android-Studio"><span class="toc-text">打开 Android Studio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-Android-Studio-%E4%B8%AD%E6%9E%84%E5%BB%BA-APK%EF%BC%9A"><span class="toc-text">在 Android Studio 中构建 APK：</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
