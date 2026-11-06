@@ -408,55 +408,84 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="从零开始，在-Windows-本地养一条属于自己的“赛博大肥鱼”（AstrBot-保姆级避坑指南）"><a href="#从零开始，在-Windows-本地养一条属于自己的“赛博大肥鱼”（AstrBot-保姆级避坑指南）" class="headerlink" title="从零开始，在 Windows 本地养一条属于自己的“赛博大肥鱼”（AstrBot 保姆级避坑指南）"></a>从零开始，在 Windows 本地养一条属于自己的“赛博大肥鱼”（AstrBot 保姆级避坑指南）</h1><h2 id="前言：什么是“大肥鱼”？"><a href="#前言：什么是“大肥鱼”？" class="headerlink" title="前言：什么是“大肥鱼”？"></a>前言：什么是“大肥鱼”？</h2><p>如果你经常混迹于 AI 圈或 B 站，大概率听说过“大肥鱼”的传说。它原本是网友对人工智能模型 <strong>DeepSeek</strong> 的拟人化爱称（因为其 Logo 是一条蓝色的鲸鱼）。后来，技术大佬们将它与 QQ 机器人框架结合，赋予了它傲娇、爱吃、甚至偶尔摸鱼的“大肥鱼”人格。</p>
-<p>今天，我们就来记录一下，如何完全在本地（Windows 环境）、<strong>零成本（仅白嫖免费 API 额度）</strong> 地部署一只属于自己的 QQ 大肥鱼。整个过程可以说是跌宕起伏，如果你也打算折腾，这篇避坑指南请务必收好。</p>
+        <h1 id="从零开始：纯小白在-Windows-本地部署“赛博大肥鱼”避坑全指南"><a href="#从零开始：纯小白在-Windows-本地部署“赛博大肥鱼”避坑全指南" class="headerlink" title="从零开始：纯小白在 Windows 本地部署“赛博大肥鱼”避坑全指南"></a>从零开始：纯小白在 Windows 本地部署“赛博大肥鱼”避坑全指南</h1><h2 id="📖-前言"><a href="#📖-前言" class="headerlink" title="📖 前言"></a>📖 前言</h2><p>“大肥鱼”是网友对 DeepSeek 的拟人化昵称。把本地部署的 AstrBot 框架和 QQ 结合起来，你就能拥有一只随时陪你聊天的 AI 宠物。<br>本文记录了我在 Windows 电脑上，全程白嫖（零成本）部署大肥鱼的真实全过程。<strong>如果你也是第一次折腾，请务必按照本文的“避坑”路线走，能帮你省去至少 5 个小时的抓狂。</strong></p>
 <hr>
-<h2 id="一、-准备工作（零成本方案）"><a href="#一、-准备工作（零成本方案）" class="headerlink" title="一、 准备工作（零成本方案）"></a>一、 准备工作（零成本方案）</h2><p>在动手之前，你需要准备以下“零件”：</p>
-<ol>
-<li><strong>一个 QQ 小号</strong>：非常重要！不要用大号，第三方协议登录存在极小的风控封号风险。</li>
-<li><strong>DeepSeek API Key</strong>：前往 DeepSeek 开放平台注册，新用户会赠送 500 万 Token 的免费额度，足够个人聊天用很久。</li>
-<li><strong>AstrBot 一键启动器</strong>：机器人的“大脑”框架（前往 GitHub 下载最新的 x64-setup.exe）。</li>
-<li><strong>大肥鱼配置包</strong>：社区提供的 <code>dafeiyu-config-pack</code>，包含人格设定和几百张表情包。</li>
-</ol>
-<hr>
-<h2 id="二、-第一阶段：部署“大脑”（AstrBot-踩坑记）"><a href="#二、-第一阶段：部署“大脑”（AstrBot-踩坑记）" class="headerlink" title="二、 第一阶段：部署“大脑”（AstrBot 踩坑记）"></a>二、 第一阶段：部署“大脑”（AstrBot 踩坑记）</h2><h3 id="1-安装框架"><a href="#1-安装框架" class="headerlink" title="1. 安装框架"></a>1. 安装框架</h3><p>下载并运行 AstrBot Launcher 后，直接点击「创建实例」，端口保持默认的 <code>6185</code>。</p>
-<p><strong>⚠️ 踩坑点 1：依赖安装卡在 60%</strong><br>第一次启动实例时，程序需要安装 Python 组件和大量依赖包。由于网络原因，进度条极容易卡死。<br><strong>解决方案</strong>：如果卡住太久，直接点取消删除实例。去启动器的「高级」设置里开启「中国大陆一键加速」，或者给你的代理软件开启全局&#x2F;TUN 模式，然后重新创建实例。成功后，记得去日志里复制初始密码，登录 <code>http://localhost:6185</code> 后台。</p>
-<h3 id="2-接入对话模型"><a href="#2-接入对话模型" class="headerlink" title="2. 接入对话模型"></a>2. 接入对话模型</h3><p>在后台左侧「模型提供商」中，新增一个提供商。</p>
+<h2 id="🛠️-第一步：搞定“大脑”基础环境-AstrBot"><a href="#🛠️-第一步：搞定“大脑”基础环境-AstrBot" class="headerlink" title="🛠️ 第一步：搞定“大脑”基础环境 (AstrBot)"></a>🛠️ 第一步：搞定“大脑”基础环境 (AstrBot)</h2><h3 id="1-下载与安装-AstrBot"><a href="#1-下载与安装-AstrBot" class="headerlink" title="1. 下载与安装 AstrBot"></a>1. 下载与安装 AstrBot</h3><ul>
+<li>前往 GitHub 的 <code>AstrBotDevs/astrbot-launcher/releases</code> 页面。</li>
+<li><strong>下载哪个？</strong> 如果你用的是普通的 Intel 或 AMD 电脑，请下载带有 <code>x64-setup.exe</code> 字样的文件（千万别下 ARM64 或 Linux 版本）。</li>
+<li>双击安装包，一路“下一步”安装完毕。打开 AstrBot Launcher。</li>
+</ul>
+<h3 id="2-创建实例（⚠️-小白极易卡壳点）"><a href="#2-创建实例（⚠️-小白极易卡壳点）" class="headerlink" title="2. 创建实例（⚠️ 小白极易卡壳点）"></a>2. 创建实例（⚠️ 小白极易卡壳点）</h3><ul>
+<li>点击右上角的蓝色按钮 <strong>「+ 创建实例」</strong>。</li>
+<li><strong>名称</strong>：随便填，比如 <code>BigFish</code>。</li>
+<li><strong>版本</strong>：下拉选择最新版。</li>
+<li><strong>端口</strong>：填入 <code>6185</code>（记住这个数字）。</li>
+<li>点击 <strong>「确定」</strong>。此时会弹出一个部署进度条。</li>
+</ul>
+<p><strong>🚨 避坑点 1：依赖安装卡在 60% 怎么办？</strong><br>第一次创建实例时，后台要下载几十个组件包，极大概率会卡在 60% 或 80% 不动。</p>
 <ul>
-<li><strong>类型</strong>：DeepSeek（或 OpenAI Compatible）</li>
-<li><strong>Base URL</strong>：<code>https://api.deepseek.com/v1</code></li>
-<li><strong>API Key</strong>：填入你的 <code>sk-</code> 密钥</li>
-<li>添加 <code>deepseek-flash</code> 模型（便宜且快），并在「配置文件」中将其设置为默认对话模型。</li>
+<li><strong>解决办法</strong>：耐心等 5 分钟。如果完全不动了，直接点右上角关闭弹窗，把列表里的实例删掉。去左侧菜单点 <strong>「高级」</strong>，开启 <strong>「中国大陆一键加速」</strong>（如果你开着全局代理，请关掉代理），然后重新创建实例。第二次有了缓存，通常几分钟就能跑完。</li>
+</ul>
+<h3 id="3-登录后台"><a href="#3-登录后台" class="headerlink" title="3. 登录后台"></a>3. 登录后台</h3><ul>
+<li>当实例状态变成 <strong>「运行中」</strong> 后，AstrBot 会弹出一个网页窗口，或者你点击列表里的 <strong>「日志」</strong> 按钮。</li>
+<li>在日志里找到 <code>Initial password: xxxxx</code> 这一行，复制这串密码。</li>
+<li>打开浏览器，输入 <code>http://localhost:6185</code>。账号输入 <code>astrbot</code>，密码粘贴刚才复制的。登录后系统会强制让你改一个新密码，改完记好。</li>
 </ul>
 <hr>
-<h2 id="三、-第二阶段：接入“嘴巴”（QQ-连接辛酸史）"><a href="#三、-第二阶段：接入“嘴巴”（QQ-连接辛酸史）" class="headerlink" title="三、 第二阶段：接入“嘴巴”（QQ 连接辛酸史）"></a>三、 第二阶段：接入“嘴巴”（QQ 连接辛酸史）</h2><p>在 AstrBot 后台的「插件市场」搜索 <code>NapCat_Go</code> 插件，准备接入 QQ。</p>
-<p><strong>⚠️ 踩坑点 2：插件市场一直转圈，下载卡死</strong><br>因为要从 GitHub 拉取数据，网络一波动就卡死。<br><strong>解决方案</strong>：直接去浏览器的 GitHub 页面，手动下载插件包的 <code>Source code (zip)</code>，回到 AstrBot 插件页面，点击右下角的 <code>+</code> 号手动上传 ZIP 包安装。</p>
-<p><strong>⚠️ 踩坑点 3：NapCat 自动启动反复报错 <code>cannot access local variable &#39;pw&#39;</code></strong><br>好不容易装好插件，却怎么也无法拉起 NapCat 核心。清理残留、重启都无效。<br><strong>终极解决方案：放弃插件自动拉取，直接手动部署！</strong></p>
-<ol>
-<li>去 NapCat 官方 GitHub 下载 **<code>NapCat.Shell.Windows.Node.zip</code>**（这个包自带了运行环境，最省事）。</li>
-<li>解压到一个纯英文路径下（如 <code>D:\NapCat</code>）。</li>
-<li>右键点击里面的 <code>launcher.bat</code>，选择 <strong>以管理员身份运行</strong>。</li>
-<li>等待黑窗口弹出二维码，用 QQ 小号扫码登录。</li>
-<li>在 NapCat 的 WebUI 界面中，新建一个 <strong>WebSockets 客户端</strong>，URL 填入 <code>ws://127.0.0.1:6199/ws</code>。</li>
-<li>看到 AstrBot 后台出现 <code>aiocqhttp(OneBot v11) 适配器已连接</code>，大功告成！</li>
-</ol>
-<hr>
-<h2 id="四、-第三阶段：注入灵魂（人格与记忆）"><a href="#四、-第三阶段：注入灵魂（人格与记忆）" class="headerlink" title="四、 第三阶段：注入灵魂（人格与记忆）"></a>四、 第三阶段：注入灵魂（人格与记忆）</h2><h3 id="1-变身大肥鱼"><a href="#1-变身大肥鱼" class="headerlink" title="1. 变身大肥鱼"></a>1. 变身大肥鱼</h3><p>确保 AstrBot 和 NapCat 都在运行，双击运行配置包里的 <code>导入大肥鱼.bat</code>。按提示输入后台账号密码、你的 QQ 大号。当问及“记忆”和“语音”时，先输入 <code>0</code> 跳过。脚本会自动下载表情包和人格设定。</p>
-<h3 id="2-关于长期记忆的探讨"><a href="#2-关于长期记忆的探讨" class="headerlink" title="2. 关于长期记忆的探讨"></a>2. 关于长期记忆的探讨</h3><p>导入完成后，AstrBot 会自动装上 <code>LivingMemory</code> 长期记忆插件。但这里有一个大坑：<strong>它需要“嵌入模型（Embedding Model）”才能工作</strong>，而 DeepSeek 目前没有这个接口。</p>
-<ul>
-<li><strong>白嫖方案</strong>：去注册一个硅基流动或 Gitee 模力方舟账号，获取免费的 <code>BAAI/bge-m3</code> 模型接口，填到 AstrBot 中。</li>
-<li><strong>躺平方案</strong>：直接用自带的短期记忆，或者去插件市场装一个纯本地无需 API 的 <code>Memorix</code> 插件。如果你嫌麻烦，其实光靠大肥鱼自带的上下文记忆，日常聊天也完全够用了。</li>
+<h2 id="🧠-第二步：给大肥鱼注入“灵魂”-接入-DeepSeek"><a href="#🧠-第二步：给大肥鱼注入“灵魂”-接入-DeepSeek" class="headerlink" title="🧠 第二步：给大肥鱼注入“灵魂” (接入 DeepSeek)"></a>🧠 第二步：给大肥鱼注入“灵魂” (接入 DeepSeek)</h2><ul>
+<li>去 DeepSeek 官网注册账号，获取一个 <code>sk-</code> 开头的 API Key。</li>
+<li>回到 AstrBot 后台，左侧点击 <strong>「模型提供商」</strong> -&gt; <strong>「+ 新增」</strong>，选择 DeepSeek。</li>
+<li>把 API Key 粘贴进去，Base URL 保持默认的 <code>https://api.deepseek.com/v1</code>。</li>
+<li>点击 <strong>「保存并获取模型」</strong>，页面下方会加载出可用模型。点击 <code>deepseek-flash</code>（或者 pro）右侧的 <code>+</code> 号添加。</li>
+<li><strong>注意</strong>：右上角的「保存配置」如果是灰色的，说明已经自动保存成功了，不用管它。</li>
+<li>最后去左侧 <strong>「配置文件」</strong> 里，把默认对话模型选为你刚添加的 <code>deepseek-flash</code>。</li>
 </ul>
 <hr>
-<h2 id="五、-终极拷问：如何让它-24-小时在线？"><a href="#五、-终极拷问：如何让它-24-小时在线？" class="headerlink" title="五、 终极拷问：如何让它 24 小时在线？"></a>五、 终极拷问：如何让它 24 小时在线？</h2><p>目前所有的程序都跑在你的个人电脑上。<strong>一旦你关闭那个黑色的终端窗口，大肥鱼就会失联。</strong> 如果你想让电脑关机它也在线，只有两个出路：</p>
-<ol>
-<li><strong>买云服务器（推荐）</strong>：租一台便宜的 Linux 云服务器，使用宝塔面板或一键脚本，把 AstrBot 和 NapCat 部署到云端。</li>
-<li><strong>用闲置设备挂机</strong>：找一台家里不用的旧笔记本或旧手机，24 小时插电运行。</li>
-</ol>
-<p>但在那之前，先别急着折腾上云。<strong>直接把这几个窗口最小化，打开 QQ，找你的小号发一句 <code>/reset</code>，然后发个表情包逗逗她吧。</strong> 享受一下折腾几小时后得到的赛博宠物，这才是最大的乐趣！</p>
+<h2 id="🔗-第三步：接入-QQ（⚠️-本次折腾最大的血泪史）"><a href="#🔗-第三步：接入-QQ（⚠️-本次折腾最大的血泪史）" class="headerlink" title="🔗 第三步：接入 QQ（⚠️ 本次折腾最大的血泪史）"></a>🔗 第三步：接入 QQ（⚠️ 本次折腾最大的血泪史）</h2><p><strong>请直接放弃 AstrBot 自带的插件市场自动安装！</strong> 因为网络原因，它大概率会一直转圈圈，或者即使装上了也会报 <code>pw</code> 变量错误无法启动。我们直接<strong>手动部署 NapCat</strong>。</p>
+<h3 id="1-下载正确的-NapCat-包"><a href="#1-下载正确的-NapCat-包" class="headerlink" title="1. 下载正确的 NapCat 包"></a>1. 下载正确的 NapCat 包</h3><ul>
+<li>前往 NapCat 的 GitHub 官方发布页：<code>NapNeko/NapCatQQ/releases</code>。</li>
+<li><strong>下载哪个？</strong> 千万别下错！请下载 **<code>NapCat.Shell.Windows.Node.zip</code>**（大约 118MB）。这个包内置了运行环境，最适合小白。</li>
+<li>下载后，解压到一个<strong>纯英文、无空格的路径</strong>下，比如 <code>D:\NapCat</code>。</li>
+</ul>
+<h3 id="2-启动并扫码登录"><a href="#2-启动并扫码登录" class="headerlink" title="2. 启动并扫码登录"></a>2. 启动并扫码登录</h3><ul>
+<li>进入解压后的文件夹，找到 **<code>launcher.bat</code>**（或者 <code>launcher-win10.bat</code>）。</li>
+<li><strong>右键点击它 -&gt; 选择「以管理员身份运行」</strong>。</li>
+<li>此时会弹出一个黑色的 PowerShell 窗口，里面会滚出很多代码。保持这个窗口开着，千万别关！</li>
+<li>稍等片刻，窗口里会出现一个二维码（有时是一个链接）。掏出你的手机，用 <strong>QQ 小号</strong> 扫码登录。</li>
+</ul>
+<h3 id="3-让-QQ-连上-AstrBot（⚠️-极易选错的地方）"><a href="#3-让-QQ-连上-AstrBot（⚠️-极易选错的地方）" class="headerlink" title="3. 让 QQ 连上 AstrBot（⚠️ 极易选错的地方）"></a>3. 让 QQ 连上 AstrBot（⚠️ 极易选错的地方）</h3><ul>
+<li>扫码登录成功后，浏览器打开 <code>http://127.0.0.1:6099/webui</code>（如果提示输入 Token，去黑窗口日志里找 <code>token=xxx</code> 的链接点进去）。</li>
+<li>在左侧菜单找到 <strong>「网络配置」</strong>。</li>
+<li>点击「新建」，<strong>必须选择「Websocket 客户端 (Client)」</strong>！（选 Server 是连不上的）。</li>
+<li><strong>启用</strong>：打开（变成粉色）。</li>
+<li><strong>URL</strong>：填入 <code>ws://127.0.0.1:6199/ws</code>。</li>
+<li><strong>Token</strong>：清空，什么都别填。</li>
+<li>点击 <strong>「保存」</strong>。</li>
+</ul>
+<p>此时，切回 AstrBot 后台，左侧点击「机器人」，状态显示为绿色的 <code>运行中 · aiocqhttp</code>，就说明 QQ 成功接入了！</p>
 <hr>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本地部署 AI QQ 机器人，与其说是一项技术，不如说是一场与网络环境、依赖包和报错代码的“搏斗”。但在 QQ 里收到那句带有大肥鱼语气回复的瞬间，一切努力都值了。</p>
-<p>祝你的大肥鱼永远不掉线！</p>
+<h2 id="🎭-第四步：导入“大肥鱼”人格包"><a href="#🎭-第四步：导入“大肥鱼”人格包" class="headerlink" title="🎭 第四步：导入“大肥鱼”人格包"></a>🎭 第四步：导入“大肥鱼”人格包</h2><ul>
+<li>前往 GitHub 下载 <code>zexuanw958-svg/dafeiyu-config-pack</code>，解压。</li>
+<li>确保 AstrBot 后台网页还开着。双击文件夹里的 **<code>导入大肥鱼.bat</code>**。</li>
+<li><strong>按提示填写</strong>：后台地址（默认回车）、账号密码、你的 QQ 大号。</li>
+<li><strong>记忆选项</strong>：输入 <code>0</code>（先跳过，稍后配）。</li>
+<li><strong>语音选项</strong>：输入 <code>0</code>（先跳过）。</li>
+<li>脚本会自动下载几百张表情包和人格设定。</li>
+<li>导入完成后，在 QQ 里给机器人发一句 **<code>/reset</code>**，然后再发一句“你是谁”，看看她是不是变成傲娇大肥鱼了！</li>
+</ul>
+<hr>
+<h2 id="🧠-第五步：关于长期记忆的真相"><a href="#🧠-第五步：关于长期记忆的真相" class="headerlink" title="🧠 第五步：关于长期记忆的真相"></a>🧠 第五步：关于长期记忆的真相</h2><p>导入脚本会自动帮你装上 <code>LivingMemory</code> 记忆插件。但这里有一个坑：它需要一个叫“Embedding（嵌入模型）”的东西才能把对话存入数据库，而 DeepSeek 官方没有这个接口。</p>
+<ul>
+<li><strong>不想折腾方案</strong>：直接放着不管。AstrBot 自带的短期记忆能记住最近的几十条聊天，日常闲聊足够了。</li>
+<li><strong>零成本白嫖方案</strong>：如果你非要让她记住你几天前说的话，去注册一个免费的硅基流动（SiliconFlow）账号，申请 API Key。在 AstrBot 的「模型提供商」里新增一个 OpenAI Embedding，模型填 <code>BAAI/bge-m3</code>，填上 Key 保存即可。</li>
+</ul>
+<hr>
+<h2 id="💻-六、-日常维护须知（划重点！）"><a href="#💻-六、-日常维护须知（划重点！）" class="headerlink" title="💻 六、 日常维护须知（划重点！）"></a>💻 六、 日常维护须知（划重点！）</h2><ol>
+<li><strong>绝对不能关的东西</strong>：那个运行着代码的<strong>黑色 PowerShell 窗口</strong>（NapCat）和 AstrBot 启动器，只要关掉，大肥鱼就会掉线。请把它们<strong>最小化</strong>。</li>
+<li><strong>怎么让它 24 小时在线</strong>：因为是在你本地的电脑跑，你一旦关机&#x2F;睡眠，它就会失联。如果你想摆脱电脑的束缚，下一步就需要去租一台云服务器（Linux 环境），把它部署到云端。</li>
+<li><strong>被风控了怎么办</strong>：QQ 小号如果掉线或者提示异常，不用慌，重新打开 NapCat 黑窗口重新扫码即可。</li>
+</ol>
+<p>折腾完毕，去 QQ 里享受你的赛博大肥鱼吧！</p>
 
       </div>
       <div class="post-tags-categories">
@@ -724,7 +753,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%EF%BC%8C%E5%9C%A8-Windows-%E6%9C%AC%E5%9C%B0%E5%85%BB%E4%B8%80%E6%9D%A1%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E2%80%9C%E8%B5%9B%E5%8D%9A%E5%A4%A7%E8%82%A5%E9%B1%BC%E2%80%9D%EF%BC%88AstrBot-%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%EF%BC%89"><span class="toc-text">从零开始，在 Windows 本地养一条属于自己的“赛博大肥鱼”（AstrBot 保姆级避坑指南）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E5%A4%A7%E8%82%A5%E9%B1%BC%E2%80%9D%EF%BC%9F"><span class="toc-text">前言：什么是“大肥鱼”？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C%EF%BC%88%E9%9B%B6%E6%88%90%E6%9C%AC%E6%96%B9%E6%A1%88%EF%BC%89"><span class="toc-text">一、 准备工作（零成本方案）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E9%83%A8%E7%BD%B2%E2%80%9C%E5%A4%A7%E8%84%91%E2%80%9D%EF%BC%88AstrBot-%E8%B8%A9%E5%9D%91%E8%AE%B0%EF%BC%89"><span class="toc-text">二、 第一阶段：部署“大脑”（AstrBot 踩坑记）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E6%A1%86%E6%9E%B6"><span class="toc-text">1. 安装框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8E%A5%E5%85%A5%E5%AF%B9%E8%AF%9D%E6%A8%A1%E5%9E%8B"><span class="toc-text">2. 接入对话模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%8E%A5%E5%85%A5%E2%80%9C%E5%98%B4%E5%B7%B4%E2%80%9D%EF%BC%88QQ-%E8%BF%9E%E6%8E%A5%E8%BE%9B%E9%85%B8%E5%8F%B2%EF%BC%89"><span class="toc-text">三、 第二阶段：接入“嘴巴”（QQ 连接辛酸史）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%B3%A8%E5%85%A5%E7%81%B5%E9%AD%82%EF%BC%88%E4%BA%BA%E6%A0%BC%E4%B8%8E%E8%AE%B0%E5%BF%86%EF%BC%89"><span class="toc-text">四、 第三阶段：注入灵魂（人格与记忆）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%98%E8%BA%AB%E5%A4%A7%E8%82%A5%E9%B1%BC"><span class="toc-text">1. 变身大肥鱼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E4%BA%8E%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86%E7%9A%84%E6%8E%A2%E8%AE%A8"><span class="toc-text">2. 关于长期记忆的探讨</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81-%E7%BB%88%E6%9E%81%E6%8B%B7%E9%97%AE%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9%E5%AE%83-24-%E5%B0%8F%E6%97%B6%E5%9C%A8%E7%BA%BF%EF%BC%9F"><span class="toc-text">五、 终极拷问：如何让它 24 小时在线？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%EF%BC%9A%E7%BA%AF%E5%B0%8F%E7%99%BD%E5%9C%A8-Windows-%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E2%80%9C%E8%B5%9B%E5%8D%9A%E5%A4%A7%E8%82%A5%E9%B1%BC%E2%80%9D%E9%81%BF%E5%9D%91%E5%85%A8%E6%8C%87%E5%8D%97"><span class="toc-text">从零开始：纯小白在 Windows 本地部署“赛博大肥鱼”避坑全指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%96-%E5%89%8D%E8%A8%80"><span class="toc-text">📖 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%90%9E%E5%AE%9A%E2%80%9C%E5%A4%A7%E8%84%91%E2%80%9D%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83-AstrBot"><span class="toc-text">🛠️ 第一步：搞定“大脑”基础环境 (AstrBot)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85-AstrBot"><span class="toc-text">1. 下载与安装 AstrBot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%AE%9E%E4%BE%8B%EF%BC%88%E2%9A%A0%EF%B8%8F-%E5%B0%8F%E7%99%BD%E6%9E%81%E6%98%93%E5%8D%A1%E5%A3%B3%E7%82%B9%EF%BC%89"><span class="toc-text">2. 创建实例（⚠️ 小白极易卡壳点）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%99%BB%E5%BD%95%E5%90%8E%E5%8F%B0"><span class="toc-text">3. 登录后台</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E7%BB%99%E5%A4%A7%E8%82%A5%E9%B1%BC%E6%B3%A8%E5%85%A5%E2%80%9C%E7%81%B5%E9%AD%82%E2%80%9D-%E6%8E%A5%E5%85%A5-DeepSeek"><span class="toc-text">🧠 第二步：给大肥鱼注入“灵魂” (接入 DeepSeek)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%97-%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E6%8E%A5%E5%85%A5-QQ%EF%BC%88%E2%9A%A0%EF%B8%8F-%E6%9C%AC%E6%AC%A1%E6%8A%98%E8%85%BE%E6%9C%80%E5%A4%A7%E7%9A%84%E8%A1%80%E6%B3%AA%E5%8F%B2%EF%BC%89"><span class="toc-text">🔗 第三步：接入 QQ（⚠️ 本次折腾最大的血泪史）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E6%AD%A3%E7%A1%AE%E7%9A%84-NapCat-%E5%8C%85"><span class="toc-text">1. 下载正确的 NapCat 包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%AF%E5%8A%A8%E5%B9%B6%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-text">2. 启动并扫码登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%A9-QQ-%E8%BF%9E%E4%B8%8A-AstrBot%EF%BC%88%E2%9A%A0%EF%B8%8F-%E6%9E%81%E6%98%93%E9%80%89%E9%94%99%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%89"><span class="toc-text">3. 让 QQ 连上 AstrBot（⚠️ 极易选错的地方）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AD-%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%AF%BC%E5%85%A5%E2%80%9C%E5%A4%A7%E8%82%A5%E9%B1%BC%E2%80%9D%E4%BA%BA%E6%A0%BC%E5%8C%85"><span class="toc-text">🎭 第四步：导入“大肥鱼”人格包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E5%85%B3%E4%BA%8E%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86%E7%9A%84%E7%9C%9F%E7%9B%B8"><span class="toc-text">🧠 第五步：关于长期记忆的真相</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E5%85%AD%E3%80%81-%E6%97%A5%E5%B8%B8%E7%BB%B4%E6%8A%A4%E9%A1%BB%E7%9F%A5%EF%BC%88%E5%88%92%E9%87%8D%E7%82%B9%EF%BC%81%EF%BC%89"><span class="toc-text">💻 六、 日常维护须知（划重点！）</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
